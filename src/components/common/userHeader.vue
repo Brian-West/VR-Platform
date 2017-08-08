@@ -112,7 +112,7 @@
                 return username ? username : this.name;
             },
             onRoutes(){
-                // return this.$route.path.replace('/','');
+                return this.$route.path;
             }
         },
         methods:{
