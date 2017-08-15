@@ -1,19 +1,19 @@
-webpackJsonp([17],{
+webpackJsonp([20],{
 
 /***/ 483:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(579)
+__webpack_require__(596)
 
 var Component = __webpack_require__(185)(
   /* script */
-  __webpack_require__(513),
+  __webpack_require__(516),
   /* template */
-  __webpack_require__(554),
+  __webpack_require__(569),
   /* scopeId */
-  "data-v-0e98802c",
+  "data-v-1ac49112",
   /* cssModules */
   null
 )
@@ -23,7 +23,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 513:
+/***/ 516:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -319,7 +319,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 526:
+/***/ 536:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(82)(undefined);
@@ -327,14 +327,14 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, ".crumbs[data-v-0e98802c]{text-decoration:none}.form-box[data-v-0e98802c]{width:300px;margin-top:50px;margin-left:0;box-shadow:0 0 8px 0 rgba(232,237,250,.9),0 2px 4px 0 rgba(232,237,250,.9);padding:50px 50px 50px 10px}ul[data-v-0e98802c]{list-style:none;display:block}li[data-v-0e98802c]{list-style-type:none;width:100%;border:1px solid #ccc}a[data-v-0e98802c],a[data-v-0e98802c]:hover,a[data-v-0e98802c]:visited{text-decoration:none}.product-list[data-v-0e98802c]{width:1000px}.product-item[data-v-0e98802c]{cursor:pointer;float:left;width:240px;height:260px;padding:30px 20px 20px;text-align:center}.product-img[data-v-0e98802c]{width:200px;height:200px;margin:0 auto}.product-img img[data-v-0e98802c]{width:100%}.product-item h3[data-v-0e98802c]{margin-top:12px;margin-bottom:12px;font-size:20px;font-weight:lighter}.pagination[data-v-0e98802c]{margin-left:50px}", ""]);
+exports.push([module.i, ".crumbs[data-v-1ac49112]{text-decoration:none}.form-box[data-v-1ac49112]{width:300px;margin-top:50px;margin-left:0;box-shadow:0 0 8px 0 rgba(232,237,250,.9),0 2px 4px 0 rgba(232,237,250,.9);padding:50px 50px 50px 10px}ul[data-v-1ac49112]{list-style:none;display:block}li[data-v-1ac49112]{list-style-type:none;width:100%;border:1px solid #ccc}a[data-v-1ac49112],a[data-v-1ac49112]:hover,a[data-v-1ac49112]:visited{text-decoration:none}.product-list[data-v-1ac49112]{width:1000px}.product-item[data-v-1ac49112]{cursor:pointer;float:left;width:240px;height:260px;padding:30px 20px 20px;text-align:center}.product-img[data-v-1ac49112]{width:200px;height:200px;margin:0 auto}.product-img img[data-v-1ac49112]{width:100%}.product-item h3[data-v-1ac49112]{margin-top:12px;margin-bottom:12px;font-size:20px;font-weight:lighter}.pagination[data-v-1ac49112]{margin-left:50px}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 554:
+/***/ 569:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -484,17 +484,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 579:
+/***/ 596:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(526);
+var content = __webpack_require__(536);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(186)("73d42868", content, true);
+var update = __webpack_require__(186)("700aa62f", content, true);
 
 /***/ })
 

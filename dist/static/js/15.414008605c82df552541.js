@@ -1,19 +1,19 @@
-webpackJsonp([10],{
+webpackJsonp([15],{
 
-/***/ 490:
+/***/ 488:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(597)
+__webpack_require__(600)
 
 var Component = __webpack_require__(185)(
   /* script */
-  __webpack_require__(521),
+  __webpack_require__(522),
   /* template */
   __webpack_require__(573),
   /* scopeId */
-  null,
+  "data-v-355e7834",
   /* cssModules */
   null
 )
@@ -23,11 +23,12 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 521:
+/***/ 522:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -307,11 +308,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             hostURL: "/VR",
             compare_data: {
                 data: [{
-                    type: "ivr",
+                    type: "evr",
                     pic_location: "./static/img/img.jpg"
 
                 }, {
-                    type: "ivr",
+                    type: "evr",
+                    pic_location: "./static/img/img.jpg"
+
+                }, {
+                    type: "evr",
                     pic_location: "./static/img/img.jpg"
 
                 }]
@@ -324,17 +329,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 productmodel: "name1",
                 picLocation: "./static/img/img.jpg",
                 //产品配置
-                screentype: "22222", //屏幕类型
-                monocularresolution: "222222", //分辨率
+                // screentype:"22222",//屏幕类型
+                // monocularresolution:"222222",//分辨率
                 weight: 1, //重量
-                cpu: 1,
-                memory: 1,
-                batteryCapacity: 1,
+                // cpu:1,
+                // memory:1,
+                // batteryCapacity:1,
                 //安全性
                 workingtemperature: 1, //温升/发热
                 bluerayirradiance: 1, //蓝光辐照度
-                soundpressurelevel: 1, //声压
-                maximumoutputvoltage: 1000, //播放器的最大输出电压
+                // soundpressurelevel:1,//声压
+                // maximumoutputvoltage:1000,//播放器的最大输出电压
                 broadbandcharacteristicvoltageofearphone: 5555, //耳机的宽带特征电压
                 boundarywarning: "222222222", //边界警示
                 // 电磁兼容性
@@ -342,7 +347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 electrostaticdischarge: "./static/img/img.jpg", //静电放电
                 //性能
                 fieldangle: 1, //视场角
-                refreshrate: 1, //刷新率
+                // refreshrate:1,//刷新率
                 systemdelay: 1, //系统延迟
                 trackingmode: 1, //跟踪模式
                 trackingrange: 1, //跟踪范围
@@ -409,7 +414,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     break;
             }
         },
-
         getData(id) {
             var self = this;
             self.data = {
@@ -419,17 +423,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 productmodel: "name1",
                 picLocation: "./static/img/img.jpg",
                 //产品配置
-                screentype: "22222", //屏幕类型
-                monocularresolution: "222222", //单眼分辨率
+                // screentype:"22222",//屏幕类型
+                // monocularresolution:"222222",//单眼分辨率
                 weight: 1, //重量
-                cpu: 1,
-                memory: 1,
-                batteryCapacity: 1,
+                // cpu:1,
+                // memory:1,
+                // batteryCapacity:1,
                 //安全性
                 workingtemperature: 1, //温升/发热
                 bluerayirradiance: 1, //蓝光辐照度
-                soundpressurelevel: 1, //声压
-                maximumoutputvoltage: 1000, //播放器的最大输出电压
+                // soundpressurelevel:1,//声压
+                // maximumoutputvoltage:1000,//播放器的最大输出电压
                 broadbandcharacteristicvoltageofearphone: 5555, //耳机的宽带特征电压
                 boundarywarning: "222222222", //边界警示
                 // 电磁兼容性
@@ -437,7 +441,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 electrostaticdischarge: "./static/img/img.jpg", //静电放电
                 //性能
                 fieldangle: 1, //视场角
-                refreshrate: 1, //刷新率
+                // refreshrate:1,//刷新率
                 systemdelay: 1, //系统延迟
                 trackingmode: 1, //跟踪模式
                 trackingrange: 1, //跟踪范围
@@ -447,7 +451,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 cvsmean: 1 //CVS均值
             };
             self.$axios({
-                url: '/ivr/' + localStorage.getItem("salesModel"),
+                url: '/evr/' + localStorage.getItem("salesModel"),
                 // url:'./static/data.json',
                 method: 'get',
                 baseURL: self.hostURL
@@ -470,7 +474,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log("compare data: " + t);
             var item = {
                 id: localStorage.getItem("salesModel"),
-                type: "ivr",
+                type: "evr",
                 pic_location: localStorage.getItem("proPic")
             };
             var add = self.checkCompare(localStorage.getItem('salesModel'));
@@ -478,14 +482,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (t.data.length == 0) {
                     t.data.push(item);
                     localStorage.setItem('compare_data', JSON.stringify(t));
-                    localStorage.setItem('kind', 'ivr');
+                    localStorage.setItem('kind', 'evr');
                     self.refreshCompare();
                 } else {
                     if (t.data.length < 4) {
                         if (item.type == t.data[0].type) {
                             t.data.push(item);
                             localStorage.setItem('compare_data', JSON.stringify(t));
-                            localStorage.setItem('kind', 'ivr');
+                            localStorage.setItem('kind', 'evr');
                             self.refreshCompare();
                         } else {
                             self.$message('只有同类产品才能加入对比！');
@@ -524,6 +528,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
     mounted() {
         var self = this;
+        console.log("2222");
         var arr = location.href.split('?');
         var id = arr[1];
         console.log(id);
@@ -534,7 +539,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 544:
+/***/ 540:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(82)(undefined);
@@ -542,7 +547,7 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, ".crumbs{text-decoration:none}.bread{font-size:16px}.form-box{width:300px;margin-top:50px;margin-left:0;box-shadow:0 0 8px 0 rgba(232,237,250,.9),0 2px 4px 0 rgba(232,237,250,.9);padding:50px 50px 50px 10px}.submit-btn{width:220px;margin-left:80px}.submit-btn button{width:100%}.product-box{padding:28px;width:800px;border:1px solid #e1e1e1;box-shadow:0 0 2px rgba(0,0,0,.1)}.box-param{width:100%;margin-top:5px}.param-title{height:40px;border-top:none;border-bottom:1px solid #e6e6e6;text-align:center}.param-title h3{padding:0 20px;font:normal 16px/40px Microsoft YaHei,arial}.param-tab table{table-layout:fixed;width:100%;border-collapse:collapse;border:1px solid #e6e6e6;border-bottom:0 none}.param-tab th{width:118px;padding:15px 0 0 20px;background:#fafafa;border-right:1px solid #e6e6e6;text-align:left;font:700 16px/26px Microsoft YaHei,arial;vertical-align:top}.param-tab td{width:605px;padding:8px 0 6px;vertical-align:top}.tab-content{padding:6px 20px 8px}ul{list-style:none}.category li{position:relative;padding:2px 0 2px 230px;line-height:26px;_zoom:1;word-wrap:break-word;font:14px/26px Microsoft YaHei,arial;color:#666}.para-name{position:absolute;top:2px;left:0;font-weight:700}.para-val{position:relative;color:#666;border-bottom:1px dashed #0a50a1}.img-container{max-width:50%}.img-container img{width:100%}.compare{display:block;width:175px;position:absolute;bottom:300px;z-index:9999;top:128px;left:900px}#compare_box{width:150px;border:1px solid #c0ccda;box-shadow:0 0 10px #c0ccda}#cancel-btn{float:right;width:10px;height:50px;margin-top:40px;margin-left:15px;cursor:pointer}.compare_item{float:left;width:90%;height:100px}.compare_item_img{width:70%;height:80%;margin-left:10px;margin-top:10px}.compare_btn{margin:20px 0 10px 30px}", ""]);
+exports.push([module.i, ".crumbs[data-v-355e7834]{text-decoration:none}.bread[data-v-355e7834]{font-size:16px}.form-box[data-v-355e7834]{width:300px;margin-top:50px;margin-left:0;box-shadow:0 0 8px 0 rgba(232,237,250,.9),0 2px 4px 0 rgba(232,237,250,.9);padding:50px 50px 50px 10px}.submit-btn[data-v-355e7834]{width:220px;margin-left:80px}.submit-btn button[data-v-355e7834]{width:100%}.product-box[data-v-355e7834]{padding:28px;width:800px;border:1px solid #e1e1e1;box-shadow:0 0 2px rgba(0,0,0,.1)}.box-param[data-v-355e7834]{width:100%;margin-top:5px}.param-title[data-v-355e7834]{height:40px;border-top:none;border-bottom:1px solid #e6e6e6;text-align:center}.param-title h3[data-v-355e7834]{padding:0 20px;font:normal 16px/40px Microsoft YaHei,arial}.param-tab table[data-v-355e7834]{table-layout:fixed;width:100%;border-collapse:collapse;border:1px solid #e6e6e6;border-bottom:0 none}.param-tab th[data-v-355e7834]{width:118px;padding:15px 0 0 20px;background:#fafafa;border-right:1px solid #e6e6e6;text-align:left;font:700 16px/26px Microsoft YaHei,arial;vertical-align:top}.param-tab td[data-v-355e7834]{width:605px;padding:8px 0 6px;vertical-align:top}.tab-content[data-v-355e7834]{padding:6px 20px 8px}ul[data-v-355e7834]{list-style:none}.category li[data-v-355e7834]{position:relative;padding:2px 0 2px 230px;line-height:26px;_zoom:1;word-wrap:break-word;font:14px/26px Microsoft YaHei,arial;color:#666}.para-name[data-v-355e7834]{position:absolute;top:2px;left:0;font-weight:700}.para-val[data-v-355e7834]{position:relative;color:#666;border-bottom:1px dashed #0a50a1}.img-container[data-v-355e7834]{max-width:50%}.img-container img[data-v-355e7834]{width:100%}.compare[data-v-355e7834]{display:block;width:175px;position:absolute;bottom:300px;z-index:9999;top:128px;left:900px}#compare_box[data-v-355e7834]{width:150px;border:1px solid #c0ccda;box-shadow:0 0 10px #c0ccda}#cancel-btn[data-v-355e7834]{float:right;width:10px;height:50px;margin-top:40px;margin-left:15px;cursor:pointer}.compare_item[data-v-355e7834]{float:left;width:90%;height:100px}.compare_item_img[data-v-355e7834]{width:70%;height:80%;margin-left:10px;margin-top:10px}.compare_btn[data-v-355e7834]{margin:20px 0 10px 30px}", ""]);
 
 // exports
 
@@ -565,9 +570,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/user/product-list"
     }
-  }, [_vm._v("产品列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("一体机")]), _vm._v(" "), _c('el-breadcrumb-item', {
+  }, [_vm._v("产品列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("手机盒子")]), _vm._v(" "), _c('el-breadcrumb-item', {
     attrs: {
-      "to": "/user/ivr-comment"
+      "to": "/user/evr-comment"
     }
   }, [_vm._v("产品简介")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("详细参数")])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "compare"
@@ -660,29 +665,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "category"
   }, [_c('li', [_c('span', {
     staticClass: "para-name"
-  }, [_vm._v("屏幕类型")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.screentype))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
-  }, [_vm._v("单眼分辨率")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.monocularresolution))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
   }, [_vm._v("重量(kg)")]), _vm._v(" "), _c('span', {
     staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.weight))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
-  }, [_vm._v("CPU(GHz)")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.cpu))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
-  }, [_vm._v("内存(GB)")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.memory))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
-  }, [_vm._v("电池容量（mAh)")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.batteryCapacity))])])])])])])])]), _vm._v(" "), _c('table', [_c('tbody', [_c('tr', [_c('th', [_vm._v("安全性")]), _vm._v(" "), _c('td', [_c('div', {
+  }, [_vm._v(_vm._s(_vm.data.weight))])])])])])])])]), _vm._v(" "), _c('table', [_c('tbody', [_c('tr', [_c('th', [_vm._v("安全性")]), _vm._v(" "), _c('td', [_c('div', {
     staticClass: "tab-content"
   }, [_c('ul', {
     staticClass: "category"
@@ -695,14 +680,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_vm._v("蓝光辐照度(W·m^－2·sr^－1)")]), _vm._v(" "), _c('span', {
     staticClass: "para-val"
   }, [_vm._v(_vm._s(_vm.data.bluerayirradiance))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
-  }, [_vm._v("声压(dB(A))")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.soundpressurelevel))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
-  }, [_vm._v("播放器的最大输出电压(mV)")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.maximumoutputvoltage))])]), _vm._v(" "), _c('li', [_c('span', {
     staticClass: "para-name"
   }, [_vm._v("耳机的宽带特征电压(mV)")]), _vm._v(" "), _c('span', {
     staticClass: "para-val"
@@ -740,10 +717,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "para-val"
   }, [_vm._v(_vm._s(_vm.data.fieldangle))])]), _vm._v(" "), _c('li', [_c('span', {
     staticClass: "para-name"
-  }, [_vm._v("刷新率(Hz)")]), _vm._v(" "), _c('span', {
-    staticClass: "para-val"
-  }, [_vm._v(_vm._s(_vm.data.refreshrate))])]), _vm._v(" "), _c('li', [_c('span', {
-    staticClass: "para-name"
   }, [_vm._v("系统延迟(ms)")]), _vm._v(" "), _c('span', {
     staticClass: "para-val"
   }, [_vm._v(_vm._s(_vm.data.systemdelay))])]), _vm._v(" "), _c('li', [_c('span', {
@@ -775,17 +748,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 597:
+/***/ 600:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(544);
+var content = __webpack_require__(540);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(186)("1a56be82", content, true);
+var update = __webpack_require__(186)("26568fa1", content, true);
 
 /***/ })
 

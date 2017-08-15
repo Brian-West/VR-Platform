@@ -1,19 +1,19 @@
 webpackJsonp([7],{
 
-/***/ 493:
+/***/ 496:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(596)
+__webpack_require__(608)
 
 var Component = __webpack_require__(185)(
   /* script */
-  __webpack_require__(524),
+  __webpack_require__(530),
   /* template */
-  __webpack_require__(571),
+  __webpack_require__(581),
   /* scopeId */
-  "data-v-7a00ef68",
+  "data-v-6c2ffd18",
   /* cssModules */
   null
 )
@@ -23,7 +23,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 524:
+/***/ 530:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -504,7 +504,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 543:
+/***/ 548:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(82)(undefined);
@@ -512,14 +512,14 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, ".crumbs[data-v-7a00ef68]{text-decoration:none}.bread[data-v-7a00ef68]{font-size:16px}.form-box[data-v-7a00ef68]{width:300px;margin-top:50px;margin-left:0;box-shadow:0 0 8px 0 rgba(232,237,250,.9),0 2px 4px 0 rgba(232,237,250,.9);padding:50px 50px 50px 10px}.submit-btn[data-v-7a00ef68]{width:220px;margin-left:80px}.submit-btn button[data-v-7a00ef68]{width:100%}.product-box[data-v-7a00ef68]{padding:28px;width:800px;border:1px solid #e1e1e1;box-shadow:0 0 2px rgba(0,0,0,.1)}.box-param[data-v-7a00ef68]{width:100%;margin-top:5px}.param-title[data-v-7a00ef68]{height:40px;border-top:none;border-bottom:1px solid #e6e6e6;text-align:center}.param-title h3[data-v-7a00ef68]{padding:0 20px;font:normal 16px/40px Microsoft YaHei,arial}.param-tab table[data-v-7a00ef68]{table-layout:fixed;width:100%;border-collapse:collapse;border:1px solid #e6e6e6;border-bottom:0 none}.param-tab th[data-v-7a00ef68]{width:118px;padding:15px 0 0 20px;background:#fafafa;border-right:1px solid #e6e6e6;text-align:left;font:700 16px/26px Microsoft YaHei,arial;vertical-align:top}.param-tab td[data-v-7a00ef68]{width:605px;padding:8px 0 6px;vertical-align:top}.tab-content[data-v-7a00ef68]{padding:6px 20px 8px}ul[data-v-7a00ef68]{list-style:none}.category li[data-v-7a00ef68]{position:relative;padding:2px 0 2px 230px;line-height:26px;_zoom:1;word-wrap:break-word;font:14px/26px Microsoft YaHei,arial;color:#666}.para-name[data-v-7a00ef68]{position:absolute;top:2px;left:0;font-weight:700}.para-val[data-v-7a00ef68]{position:relative;color:#666;border-bottom:1px dashed #0a50a1}.img-container[data-v-7a00ef68]{max-width:50%}.img-container img[data-v-7a00ef68]{width:100%}.text[data-v-7a00ef68]{width:400px;font-size:15px}.btn[data-v-7a00ef68]{margin-left:180px;margin-top:30px}.compare[data-v-7a00ef68]{display:block;width:175px;position:absolute;bottom:300px;z-index:9999;top:128px;left:900px}#compare_box[data-v-7a00ef68]{width:150px;border:1px solid #c0ccda;box-shadow:0 0 10px #c0ccda}#cancel-btn[data-v-7a00ef68]{float:right;width:10px;height:50px;margin-top:40px;margin-left:15px;cursor:pointer}.compare_item[data-v-7a00ef68]{float:left;width:90%;height:100px}.compare_item_img[data-v-7a00ef68]{width:70%;height:80%;margin-left:10px;margin-top:10px}.compare_btn[data-v-7a00ef68]{margin:20px 0 10px 30px}", ""]);
+exports.push([module.i, ".crumbs[data-v-6c2ffd18]{text-decoration:none}.bread[data-v-6c2ffd18]{font-size:16px}.form-box[data-v-6c2ffd18]{width:300px;margin-top:50px;margin-left:0;box-shadow:0 0 8px 0 rgba(232,237,250,.9),0 2px 4px 0 rgba(232,237,250,.9);padding:50px 50px 50px 10px}.submit-btn[data-v-6c2ffd18]{width:220px;margin-left:80px}.submit-btn button[data-v-6c2ffd18]{width:100%}.product-box[data-v-6c2ffd18]{padding:28px;width:800px;border:1px solid #e1e1e1;box-shadow:0 0 2px rgba(0,0,0,.1)}.box-param[data-v-6c2ffd18]{width:100%;margin-top:5px}.param-title[data-v-6c2ffd18]{height:40px;border-top:none;border-bottom:1px solid #e6e6e6;text-align:center}.param-title h3[data-v-6c2ffd18]{padding:0 20px;font:normal 16px/40px Microsoft YaHei,arial}.param-tab table[data-v-6c2ffd18]{table-layout:fixed;width:100%;border-collapse:collapse;border:1px solid #e6e6e6;border-bottom:0 none}.param-tab th[data-v-6c2ffd18]{width:118px;padding:15px 0 0 20px;background:#fafafa;border-right:1px solid #e6e6e6;text-align:left;font:700 16px/26px Microsoft YaHei,arial;vertical-align:top}.param-tab td[data-v-6c2ffd18]{width:605px;padding:8px 0 6px;vertical-align:top}.tab-content[data-v-6c2ffd18]{padding:6px 20px 8px}ul[data-v-6c2ffd18]{list-style:none}.category li[data-v-6c2ffd18]{position:relative;padding:2px 0 2px 230px;line-height:26px;_zoom:1;word-wrap:break-word;font:14px/26px Microsoft YaHei,arial;color:#666}.para-name[data-v-6c2ffd18]{position:absolute;top:2px;left:0;font-weight:700}.para-val[data-v-6c2ffd18]{position:relative;color:#666;border-bottom:1px dashed #0a50a1}.img-container[data-v-6c2ffd18]{max-width:50%}.img-container img[data-v-6c2ffd18]{width:100%}.text[data-v-6c2ffd18]{width:400px;font-size:15px}.btn[data-v-6c2ffd18]{margin-left:180px;margin-top:30px}.compare[data-v-6c2ffd18]{display:block;width:175px;position:absolute;bottom:300px;z-index:9999;top:128px;left:900px}#compare_box[data-v-6c2ffd18]{width:150px;border:1px solid #c0ccda;box-shadow:0 0 10px #c0ccda}#cancel-btn[data-v-6c2ffd18]{float:right;width:10px;height:50px;margin-top:40px;margin-left:15px;cursor:pointer}.compare_item[data-v-6c2ffd18]{float:left;width:90%;height:100px}.compare_item_img[data-v-6c2ffd18]{width:70%;height:80%;margin-left:10px;margin-top:10px}.compare_btn[data-v-6c2ffd18]{margin:20px 0 10px 30px}", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 571:
+/***/ 581:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -733,17 +733,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 596:
+/***/ 608:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(543);
+var content = __webpack_require__(548);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(186)("120bde7a", content, true);
+var update = __webpack_require__(186)("044bce7e", content, true);
 
 /***/ })
 

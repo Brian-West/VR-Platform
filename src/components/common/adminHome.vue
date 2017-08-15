@@ -28,3 +28,8 @@ export default {
 
 }
 </script>
+<style type="text/css" scoped>
+.content{
+	background: #dfe6ec;
+}
+</style>

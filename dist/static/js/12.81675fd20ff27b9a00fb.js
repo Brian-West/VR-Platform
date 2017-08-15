@@ -1,17 +1,17 @@
-webpackJsonp([11],{
+webpackJsonp([12],{
 
-/***/ 489:
+/***/ 491:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(601)
+__webpack_require__(614)
 
 var Component = __webpack_require__(185)(
   /* script */
-  __webpack_require__(520),
+  __webpack_require__(525),
   /* template */
-  __webpack_require__(577),
+  __webpack_require__(587),
   /* scopeId */
   null,
   /* cssModules */
@@ -23,7 +23,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 520:
+/***/ 525:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -166,11 +166,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             compare_data: {
                 data: [{
-                    type: "evr",
+                    type: "ivr",
                     pic_location: "./static/img/img.jpg"
 
                 }, {
-                    type: "evr",
+                    type: "ivr",
                     pic_location: "./static/img/img.jpg"
 
                 }]
@@ -180,11 +180,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             intro: {
                 pic_location: "",
                 pro_name: ""
-
             },
 
             pro_thumbs: {
-                type: "手机盒子",
+                type: "一体机",
                 upvote: 50,
                 downvote: 10,
                 state: 0
@@ -343,14 +342,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     upvote: "0",
                     belong: "0",
                     releasetime: "刚刚",
-                    messageResponses: [{
-                        user: {
-                            id: "",
-                            nickname: null
-                        },
-                        messageResponse: "",
-                        releasetime: null
-                    }],
+                    // messageResponses:[{
+                    //     user:{
+                    //         id:"",
+                    //         nickname:null,
+                    //     },
+                    //     messageResponse:"",
+                    //     releasetime:null
+                    // }],
                     state: 0
                 });
                 self.new_data.new_comments.reverse();
@@ -361,7 +360,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                     appear: 0,
                     textarea: ""
                 });
+                console.log("textarea=" + self.textarea);
                 self.textarea = "";
+                console.log("textarea=" + self.textarea);
             }
         },
         //回复-热评
@@ -571,12 +572,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getProThumbs() {
             var self = this;
             self.pro_thumbs = {
-                type: "手机盒子",
+                type: "一体机",
                 upvote: 10,
                 downvote: 20,
                 state: 0
             };
-            console.log("proname: " + localStorage.getItem("salesModel"));
+            console.log("proname: " + localStorage.getItem("proName"));
             self.$axios({
                 url: '/Thumbs/' + localStorage.getItem('ms_userid'),
                 method: 'post',
@@ -654,8 +655,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 }
             }).then(response => {
                 self.pro_intro = response.data;
-                // self.intro.pic_location=localStorage.getItem("proPic");
-                // self.intro.pro_name=localStorage.getItem("salesModel");
             }).catch(error => {
                 console.log(error);
             });
@@ -673,7 +672,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             var arr = location.href.split('?');
             var id = arr[1];
-            self.$router.push('/user/evr-comment/evr?' + id);
+            self.$router.push('/user/ivr-comment/ivr?' + id);
         },
         //更新对比
         refreshCompare() {
@@ -687,7 +686,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log("compare data: " + t);
             var item = {
                 id: localStorage.getItem("salesModel"),
-                type: "evr",
+                type: "ivr",
                 pic_location: localStorage.getItem("proPic")
             };
             var add = self.checkCompare(localStorage.getItem('salesModel'));
@@ -695,14 +694,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (t.data.length == 0) {
                     t.data.push(item);
                     localStorage.setItem('compare_data', JSON.stringify(t));
-                    localStorage.setItem('kind', 'evr');
+                    localStorage.setItem('kind', 'ivr');
                     self.refreshCompare();
                 } else {
                     if (t.data.length < 4) {
                         if (item.type == t.data[0].type) {
                             t.data.push(item);
                             localStorage.setItem('compare_data', JSON.stringify(t));
-                            localStorage.setItem('kind', 'evr');
+                            localStorage.setItem('kind', 'ivr');
                             self.refreshCompare();
                         } else {
                             self.$message('只有同类产品才能加入对比！');
@@ -754,12 +753,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var self = this;
         self.getIntro();
     }
-
 });
 
 /***/ }),
 
-/***/ 548:
+/***/ 554:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(82)(undefined);
@@ -774,7 +772,7 @@ exports.push([module.i, ".crumbs{text-decoration:none}.bread{font-size:16px}.for
 
 /***/ }),
 
-/***/ 577:
+/***/ 587:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -790,7 +788,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/user/product-list"
     }
-  }, [_vm._v("产品列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("手机盒子")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("产品简介")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("产品列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("一体机")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("产品简介")])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "compare"
   }, [_c('div', {
     attrs: {
@@ -1113,17 +1111,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 601:
+/***/ 614:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(548);
+var content = __webpack_require__(554);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(186)("e9d71cb8", content, true);
+var update = __webpack_require__(186)("6fc47e3c", content, true);
 
 /***/ })
 

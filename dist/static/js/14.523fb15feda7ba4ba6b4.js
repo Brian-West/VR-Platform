@@ -1,17 +1,17 @@
-webpackJsonp([6],{
+webpackJsonp([14],{
 
-/***/ 494:
+/***/ 489:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(583)
+__webpack_require__(597)
 
 var Component = __webpack_require__(185)(
   /* script */
-  __webpack_require__(525),
+  __webpack_require__(523),
   /* template */
-  __webpack_require__(558),
+  __webpack_require__(570),
   /* scopeId */
   null,
   /* cssModules */
@@ -23,7 +23,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 525:
+/***/ 523:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -166,11 +166,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
             compare_data: {
                 data: [{
-                    type: "svr",
+                    type: "evr",
                     pic_location: "./static/img/img.jpg"
 
                 }, {
-                    type: "svr",
+                    type: "evr",
                     pic_location: "./static/img/img.jpg"
 
                 }]
@@ -184,7 +184,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             },
 
             pro_thumbs: {
-                type: "PC头显",
+                type: "手机盒子",
                 upvote: 50,
                 downvote: 10,
                 state: 0
@@ -571,7 +571,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         getProThumbs() {
             var self = this;
             self.pro_thumbs = {
-                type: "PC头显",
+                type: "手机盒子",
                 upvote: 10,
                 downvote: 20,
                 state: 0
@@ -673,7 +673,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             var self = this;
             var arr = location.href.split('?');
             var id = arr[1];
-            self.$router.push('/user/svr-comment/svr?' + id);
+            self.$router.push('/user/evr-comment/evr?' + id);
         },
         //更新对比
         refreshCompare() {
@@ -687,7 +687,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             console.log("compare data: " + t);
             var item = {
                 id: localStorage.getItem("salesModel"),
-                type: "svr",
+                type: "evr",
                 pic_location: localStorage.getItem("proPic")
             };
             var add = self.checkCompare(localStorage.getItem('salesModel'));
@@ -695,14 +695,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
                 if (t.data.length == 0) {
                     t.data.push(item);
                     localStorage.setItem('compare_data', JSON.stringify(t));
-                    localStorage.setItem('kind', 'svr');
+                    localStorage.setItem('kind', 'evr');
                     self.refreshCompare();
                 } else {
                     if (t.data.length < 4) {
                         if (item.type == t.data[0].type) {
                             t.data.push(item);
                             localStorage.setItem('compare_data', JSON.stringify(t));
-                            localStorage.setItem('kind', 'svr');
+                            localStorage.setItem('kind', 'evr');
                             self.refreshCompare();
                         } else {
                             self.$message('只有同类产品才能加入对比！');
@@ -754,11 +754,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         var self = this;
         self.getIntro();
     }
+
 });
 
 /***/ }),
 
-/***/ 530:
+/***/ 537:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(82)(undefined);
@@ -773,7 +774,7 @@ exports.push([module.i, ".crumbs{text-decoration:none}.bread{font-size:16px}.for
 
 /***/ }),
 
-/***/ 558:
+/***/ 570:
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -789,7 +790,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "to": "/user/product-list"
     }
-  }, [_vm._v("产品列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("PC头显")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("产品简介")])], 1)], 1), _vm._v(" "), _c('div', {
+  }, [_vm._v("产品列表")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("手机盒子")]), _vm._v(" "), _c('el-breadcrumb-item', [_vm._v("产品简介")])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "compare"
   }, [_c('div', {
     attrs: {
@@ -1112,17 +1113,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
 
 /***/ }),
 
-/***/ 583:
+/***/ 597:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(530);
+var content = __webpack_require__(537);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(186)("0612cd3b", content, true);
+var update = __webpack_require__(186)("24a761d0", content, true);
 
 /***/ })
 

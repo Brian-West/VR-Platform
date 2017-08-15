@@ -1,11 +1,12 @@
 <template>
 	<div class="sidebar">
-		<el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router>
+		<el-menu :default-active="onRoutes" class="el-menu-vertical-demo" theme="dark" unique-opened router @select="handleSelect">
 			<template v-for="item in items">
 				<template v-if="item.subs">
 					<el-submenu :index="item.index">
 						<template slot="title"><i :class="item.icon"></i>{{ item.title }}</template>
-						<el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">{{ subItem.title }}
+						<el-menu-item v-for="(subItem,i) in item.subs" :key="i" :index="subItem.index">
+							{{ subItem.title }}
 						</el-menu-item>
 					</el-submenu>
 				</template>
@@ -32,8 +33,18 @@ export default {
 
 				{
 					icon: 'el-icon-menu',
-					index: '233',
-					title: '新闻模块管理'
+					index: '/admin/news-management',
+					title: '新闻模块管理',
+					subs: [
+						{
+							index: '/admin/news-management/list',
+							title: '新闻列表'
+						},
+						{
+							index: '/admin/news-management/2',
+							title: '待定'
+						}
+					]
 				},
 				{
 					icon: 'el-icon-menu',
@@ -65,7 +76,14 @@ export default {
 	},
 	computed: {
 		onRoutes() {
-			// return this.$route.path.replace('/','');
+			return this.$route.path;
+		}
+	},
+	methods: {
+		handleSelect(key, keyPath) {
+			var self = this;
+		  	console.log(key, keyPath);
+		  	self.$router.push(key);
 		}
 	}
 }

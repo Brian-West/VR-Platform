@@ -6,7 +6,7 @@ Vue.use(Router);
 export default new Router({
 	routes: [{
 			path: '/',
-			redirect: '/user/news-list'
+			redirect: '/admin/news-management/list'
 		},
 		{
 			path: '/nologin',
@@ -94,16 +94,31 @@ export default new Router({
 				{
 					path: '/admin/UploadFile',
 					component: resolve => require(['../components/page/UploadFile.vue'], resolve)
+				},
+				{
+					path: 'news-management',
+					component: resolve => require(['../components/page/newsManagement.vue'], resolve),
+					children: [{
+						path: 'list'
+					},
+					{
+						path: '2'
+					}
+					]
+				},
+				{
+					path: 'news',
+					component: resolve => require(['../components/page/newsAdmin.vue'], resolve)
+				},
+				{
+					path: 'newsEdit',
+					component: resolve => require(['../components/page/newsEdit.vue'], resolve)
 				}
 			]
 		},
 		{
 			path: '/login',
 			component: resolve => require(['../components/page/Login.vue'], resolve)
-		},
-		{
-			path: '/233',
-			component: resolve => require(['../components/page/233.vue'], resolve)
 		}
 	]
 })
