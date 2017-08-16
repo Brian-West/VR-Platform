@@ -6,7 +6,7 @@ Vue.use(Router);
 export default new Router({
 	routes: [{
 			path: '/',
-			redirect: '/admin/news-management/list'
+			redirect: '/login'
 		},
 		{
 			path: '/nologin',

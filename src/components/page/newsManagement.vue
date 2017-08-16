@@ -89,26 +89,26 @@ export default {
 	        	switch (key) {
 	        		case '1-1':
 	        			self.curCategory = 0
-	        			self.getNews(self.pageNum[0][0], self.curCategory, 0);
+	        			self.getNews(self.pageNum[0][0], self.curCategory, 1);
 	        			break;
 	        		case '1-2':
-	        			self.curCategory = 0
-	        			self.getNews(self.pageNum[0][1], self.curCategory, 0);
+	        			self.curCategory = 1
+	        			self.getNews(self.pageNum[0][1], self.curCategory, 1);
 	        			break;
 	        		case '1-3':
-	        			self.curCategory = 0
-	        			self.getNews(self.pageNum[0][2], self.curCategory, 0);
+	        			self.curCategory = 2
+	        			self.getNews(self.pageNum[0][2], self.curCategory, 1);
 	        			break;
 	        		case '1-4':
-	        			self.curCategory = 0
-	        			self.getNews(self.pageNum[0][3], self.curCategory, 0);
+	        			self.curCategory = 3
+	        			self.getNews(self.pageNum[0][3], self.curCategory, 1);
 	        			break;
 	        		case '1-5':
-	        			self.curCategory = 0
-	        			self.getNews(self.pageNum[0][4], self.curCategory, 0);
+	        			self.curCategory = 4
+	        			self.getNews(self.pageNum[0][4], self.curCategory, 1);
 	        			break;
 	        		case '2':
-	        			self.getNews(self.pageNum[1], 0, 1);
+	        			self.getNews(self.pageNum[1], 0, 0);
 	        			break;
 	        		case '3':
 	        			self.getNews(self.pageNum[2], 0, 2);
@@ -120,11 +120,8 @@ export default {
 	      getNews(str, category, flag) {
 	      		var self = this;
 	      		self.newsList = [];
-	      		if(category != 0) {
-	      			str = str + '/' + category;
-	      		}
 	      		self.$axios({
-	      			url: '/news_list/' + str,
+	      			url: '/news_list/' + str +'/' + category + '/' + flag,
 	      			method: 'get',
 	      			baseURL: 'http://localhost:8080'+self.hostURL
 	      		}).then((response) => {
@@ -143,22 +140,22 @@ export default {
 			console.log(e);
 			switch (self.activeIndex) {
 	        		case '1-1':
-	        			self.getNews(e, self.curCategory, 0);
+	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 	        		case '1-2':
-	        			self.getNews(e, self.curCategory, 0);
+	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 	        		case '1-3':
-	        			self.getNews(e, self.curCategory, 0);
+	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 	        		case '1-4':
-	        			self.getNews(e, self.curCategory, 0);
+	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 				case '1-5':
-	        			self.getNews(e, self.curCategory, 0);
+	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 	        		case '2':
-	        			self.getNews(e, 0, 1);
+	        			self.getNews(e, 0, 0);
 	        			break;
 	        		case '3':
 	        			self.getNews(e, 0, 2);
@@ -196,26 +193,26 @@ export default {
 			   		switch (this.activeIndex) {
 			   			case '1-1':
 			   				self.curCategory = 0
-			   				self.getNews(self.pageNum[0][0], self.curCategory, 0);
+			   				self.getNews(self.pageNum[0][0], self.curCategory, 1);
 			   				break;
 			   			case '1-2':
-			   				self.curCategory = 0
-			   				self.getNews(self.pageNum[0][1], self.curCategory, 0);
+			   				self.curCategory = 1
+			   				self.getNews(self.pageNum[0][1], self.curCategory, 1);
 			   				break;
 			   			case '1-3':
-			   				self.curCategory = 0
-			   				self.getNews(self.pageNum[0][2], self.curCategory, 0);
+			   				self.curCategory = 2
+			   				self.getNews(self.pageNum[0][2], self.curCategory, 1);
 			   				break;
 			   			case '1-4':
-			   				self.curCategory = 0
-			   				self.getNews(self.pageNum[0][3], self.curCategory, 0);
+			   				self.curCategory = 3
+			   				self.getNews(self.pageNum[0][3], self.curCategory, 1);
 			   				break;
 			   			case '1-5':
-			   				self.curCategory = 0
-			   				self.getNews(self.pageNum[0][4], self.curCategory, 0);
+			   				self.curCategory = 4
+			   				self.getNews(self.pageNum[0][4], self.curCategory, 1);
 			   				break;
 			   			case '2':
-			   				self.getNews(self.pageNum[1], 0, 1);
+			   				self.getNews(self.pageNum[1], 0, 0);
 			   				break;
 			   			case '3':
 			   				self.getNews(self.pageNum[2], 0, 2);

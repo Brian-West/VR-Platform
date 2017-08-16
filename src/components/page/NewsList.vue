@@ -183,19 +183,19 @@ export default {
 					self.getNews(self.pageNum[0], self.curCategory);
 					break;
 				case 'second':
-					self.curCategory = 0;
+					self.curCategory = 1;
 					self.getNews(self.pageNum[1], self.curCategory);
 					break;
 				case 'third':
-					self.curCategory = 0;
+					self.curCategory = 2;
 					self.getNews(self.pageNum[2], self.curCategory);
 					break;
 				case 'forth':
-					self.curCategory = 0;
+					self.curCategory = 3;
 					self.getNews(self.pageNum[3], self.curCategory);
 					break;
 				case 'fifth':
-					self.curCategory = 0;
+					self.curCategory = 4;
 					self.getNews(self.pageNum[4], self.curCategory);
 					break;
 				default:
@@ -205,11 +205,8 @@ export default {
 		getNews(str, category) {
 			var self = this;
 			self.newsList = [];
-			if(category != 0) {
-				str = str + '/' + category;
-			}
 			self.$axios({
-				url: '/news_list/' + str,
+				url: '/news_list/' + str + '/' + category +'/' + 1,
 				method: 'get',
 				baseURL: 'http://localhost:8080'+self.hostURL
 			}).then((response) => {
@@ -224,13 +221,11 @@ export default {
 		},
 		handleCurrentChange(e) {
 			var self = this;
-			console.log("current-Page:");
-			console.log(e);
+			console.log("current-Page:" + e);
 			self.getNews(e, self.curCategory);
 		},
 		newsClick(news) {
 			var self = this;
-			console.log("11111111");
 			console.log(news);
 			self.$router.push('/user/news?' + news.id);
 		}

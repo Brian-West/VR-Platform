@@ -94,7 +94,8 @@ export default {
 						}
 					]
 				}
-			]
+			],
+			onRoutes: '/user/news-list'
 		}
 	},
 	computed: {
@@ -102,9 +103,10 @@ export default {
 			let username = localStorage.getItem('ms_username');
 			return username ? username : this.name;
 		},
-		onRoutes() {
-			return this.$route.path;
-		}
+		// onRoutes() {
+		// 	//console.log(this.$route.path)
+		// 	return '/user/news-list';
+		// }
 	},
 	methods: {
 		handleCommand(command) {

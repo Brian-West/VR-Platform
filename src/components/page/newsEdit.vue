@@ -12,10 +12,10 @@
 			</el-form-item>
 			<el-form-item label="新闻分类" prop="category">
 				<el-radio-group v-model="form.category">
-					<el-radio label="a">VR行业</el-radio>
-					<el-radio label="b">VR设备</el-radio>
-					<el-radio label="c">VR应用</el-radio>
-					<el-radio label="d">VR人物</el-radio>
+					<el-radio label="VR行业">VR行业</el-radio>
+					<el-radio label="VR设备">VR设备</el-radio>
+					<el-radio label="VR应用">VR应用</el-radio>
+					<el-radio label="VR人物">VR人物</el-radio>
 				</el-radio-group>
 			</el-form-item>
 			<el-form-item label="新闻内容" prop="content">
