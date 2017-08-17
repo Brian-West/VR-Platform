@@ -1,37 +1,45 @@
 <template>
-	<div class="news-box">
-		<el-form ref="form" :model="form" :rules="rules" label-width="80px" labelPosition="right">
-			<el-form-item label="新闻标题" prop="title">
-				<el-input v-model="form.title"></el-input>
-			</el-form-item>
-			<el-form-item label="新闻摘要" prop="desc">
-				<el-input v-model="form.desc"></el-input>
-			</el-form-item>
-			<el-form-item label="新闻来源">
-				<el-input v-model="form.source"></el-input>
-			</el-form-item>
-			<el-form-item label="新闻分类" prop="category">
-				<el-radio-group v-model="form.category">
-					<el-radio label="VR行业">VR行业</el-radio>
-					<el-radio label="VR设备">VR设备</el-radio>
-					<el-radio label="VR应用">VR应用</el-radio>
-					<el-radio label="VR人物">VR人物</el-radio>
-				</el-radio-group>
-			</el-form-item>
-			<el-form-item label="新闻内容" prop="content">
-				<el-input type="textarea" v-model="form.content"></el-input>
-			</el-form-item>
-			<el-form-item label="图片">
-				<div class="news-img">
-				<img :src="newsData.pic_location">
-			</div>
-			</el-form-item>
-			
-			<el-form-item class="btn">
-				<el-button type="primary" @click="onSubmit('form')">确认发布</el-button>
-				<el-button @click="cancel()">取消</el-button>
-			</el-form-item>
-		</el-form>
+	<div>
+		<div class="crumbs">
+			<el-breadcrumb separator="/">
+				<el-breadcrumb-item to="/admin/news-management/list"><i class="el-icon-date"></i> <span class="bread">新闻列表</span></el-breadcrumb-item>
+				<el-breadcrumb-item><span class="bread">{{category}}</span></el-breadcrumb-item>
+			</el-breadcrumb>
+		</div>
+		<div class="news-box">
+			<el-form ref="form" :model="form" :rules="rules" label-width="80px" labelPosition="right">
+				<el-form-item label="新闻标题" prop="title">
+					<el-input v-model="form.title"></el-input>
+				</el-form-item>
+				<el-form-item label="新闻摘要" prop="desc">
+					<el-input v-model="form.desc"></el-input>
+				</el-form-item>
+				<el-form-item label="新闻来源">
+					<el-input v-model="form.source"></el-input>
+				</el-form-item>
+				<el-form-item label="新闻分类" prop="category">
+					<el-radio-group v-model="form.category">
+						<el-radio label="VR行业">VR行业</el-radio>
+						<el-radio label="VR设备">VR设备</el-radio>
+						<el-radio label="VR应用">VR应用</el-radio>
+						<el-radio label="VR人物">VR人物</el-radio>
+					</el-radio-group>
+				</el-form-item>
+				<el-form-item label="新闻内容" prop="content">
+					<el-input type="textarea" v-model="form.content"></el-input>
+				</el-form-item>
+				<el-form-item label="图片">
+					<div class="news-img">
+					<img :src="newsData.pic_location">
+				</div>
+				</el-form-item>
+				
+				<el-form-item class="btn">
+					<el-button type="primary" @click="onSubmit('form')">确认发布</el-button>
+					<el-button @click="cancel()">取消</el-button>
+				</el-form-item>
+			</el-form>
+		</div>
 	</div>
 </template>
 <script type="text/javascript">
@@ -62,6 +70,12 @@ export default {
 					{required: true, message: '请填写新闻的内容！', trigger: 'blur'},
 				]
 			}
+		}
+	},
+	computed: {
+		category() {
+			if(this.newsData.tag == null) return '全部'
+			//待续
 		}
 	},
 	methods: {
@@ -132,6 +146,14 @@ export default {
 }
 </script>
 <style type="text/css" scoped>
+.crumbs {
+	text-decoration: none;
+}
+
+.bread {
+	font-size: 16px;
+}
+
 .news-box {
 	padding: 28px;
 	width: 800px;

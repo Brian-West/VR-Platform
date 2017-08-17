@@ -110,16 +110,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					index: '/user/change-password',
 					title: '修改密码'
 				}]
-			}]
+			}],
+			onRoutes: '/user/news-list'
 		};
 	},
 	computed: {
 		username() {
 			let username = localStorage.getItem('ms_username');
 			return username ? username : this.name;
-		},
-		onRoutes() {
-			return this.$route.path;
 		}
 	},
 	methods: {

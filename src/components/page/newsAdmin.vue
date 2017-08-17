@@ -76,6 +76,7 @@
 						</div>
 					</el-tab-pane>
 				</el-tabs>
+				<el-button type="primary" icon="edit" @click="newsEdit(newsData.id)">编辑</el-button>
 				<!-- <el-button-group>
 					<el-button type="primary" icon="circle-check">赞</el-button>
 					<el-button type="primary">踩<i class="el-icon-circle-cross el-icon--right"></i></el-button>
@@ -163,7 +164,10 @@ export default {
 	computed: {
 		category() {
 			if(this.newsData.tag == null) return '全部'
-			//待续
+			if(this.newsData.tag ==1) return 'VR行业'
+			if(this.newsData.tag ==2) return 'VR设备'
+			if(this.newsData.tag ==2) return 'VR应用'
+			if(this.newsData.tag ==2) return 'VR人物'
 		}
 	},
 	methods: {
@@ -296,28 +300,31 @@ export default {
 			});
 		},
 		//获取新闻点赞数
-		getNewsUpvote() {
-			var self = this;
-			self.$axios({
-				url: '/news/getUpvote/' + self.newsData.id,// + localStorage.getItem('ms_userid'),
-				method: 'post',
-				baseURL: self.hostURL,
-				//data: {
-				//	belong: localStorage.getItem("salesModel")
-				//}
-			}).then((response) => {
-				self.newsData.upvote = response.data;
-			}).catch((error) => {
-				console.log(error);
-			});
-		},
+		//getNewsUpvote() {
+		//	var self = this;
+		//	self.$axios({
+		//		url: '/news/getUpvote/' + self.newsData.id,// + localStorage.getItem('ms_userid'),
+		//		method: 'post',
+		//		baseURL: self.hostURL,
+		//		//data: {
+		//		//	belong: localStorage.getItem("salesModel")
+		//		//}
+		//	}).then((response) => {
+		//		self.newsData.upvote = response.data;
+		//	}).catch((error) => {
+		//		console.log(error);
+		//	});
+		//},
+		newsEdit(id) {
+			this.$router.push('/admin/newsEdit?' + id);
+		}
 	},
 	mounted() {
 		var self = this;
 		var arr = location.href.split('?');
 		var news_id = arr[1];
 		self.getNewsData(news_id);
-		self.getNewsUpvote();
+		//self.getNewsUpvote();
 		self.getHotComments();
 		self.getNewComments();
 	}

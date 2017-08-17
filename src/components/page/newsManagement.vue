@@ -12,10 +12,10 @@
 			</el-submenu>
 			<el-menu-item index="2"><span class="text">待审核</span></el-menu-item>
 			<el-menu-item index="3"><span class="text">已删除</span></el-menu-item>
-			<div class="block search">
+			<div class="block search" v-show="able">
 			    	<el-date-picker v-model="time" type="datetimerange" placeholder="选择时间范围"></el-date-picker>
 			</div>
-			<el-button class="btn-search" type="primary" icon="search" @click="search()">搜索</el-button>
+			<el-button class="btn-search" type="primary" icon="search" @click="search()" v-show="able">搜索</el-button>
 			<ul class="news-list">
 				<li class="news-item" v-for="news in newsList">
 					<a href="javascript:void(0);" class="link-tit" title="">
@@ -79,6 +79,10 @@ export default {
 	computed: {
 		ok: function() {
 			return this.$route.path == '/admin/news-management/list';
+		},
+		able() {
+			if(this.activeIndex == '3') return false
+			else return true
 		}
 	},
 	methods: {
@@ -234,9 +238,13 @@ export default {
 			var foo = this.time
 			var d1 = this.parseDate(foo[0])
 			var d2 = this.parseDate(foo[1])
+			var push = 1
+			if(this.activeIndex == '2') push = 0
 			this.$axios.post('http://localhost:8080' + this.hostURL + '/getNewsByRange', {
 				from: d1,
-				to: d2
+				to: d2,
+				category: this.curCategory,
+				is_push: push
 			}).then((response) => {
 				this.newsList = []
 				this.newsList = response.data
@@ -256,7 +264,7 @@ export default {
 	},
 	mounted() {
 		var self = this;
-		self.getNews(self.pageNum[0][0], self.curCategory, 0);
+		self.getNews(self.pageNum[0][0], self.curCategory, 1);
 	}
 }
 </script>

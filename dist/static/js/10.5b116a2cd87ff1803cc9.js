@@ -64,6 +64,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
@@ -85,6 +93,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				content: [{ required: true, message: '请填写新闻的内容！', trigger: 'blur' }]
 			}
 		};
+	},
+	computed: {
+		category() {
+			if (this.newsData.tag == null) return '全部';
+			//待续
+		}
 	},
 	methods: {
 		getNewsData(id) {
@@ -163,7 +177,7 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, ".news-box[data-v-07f5f870]{padding:28px;width:800px;border:1px solid #e1e1e1;box-shadow:0 0 2px rgba(0,0,0,.1)}.news-title[data-v-07f5f870]{font-size:22px;color:#287d7c;line-height:50px;font-weight:400;display:block}.borderline[data-v-07f5f870]{border-bottom:1px dotted #bfbfbf}.artinfo[data-v-07f5f870]{float:left;padding-bottom:5px;color:#999;margin:0;padding:0;display:block}.author[data-v-07f5f870]{color:#666}.article p[data-v-07f5f870]{padding:30px 0 50px;font-size:18px;color:#333;line-height:200%;text-indent:2em}.article[data-v-07f5f870]{display:inline-block;line-height:26px;padding-bottom:25px}.news-img[data-v-07f5f870]{text-align:center}.btn[data-v-07f5f870]{display:block;padding-left:500px}.news-comment[data-v-07f5f870]{margin-top:20px;text-align:center}", ""]);
+exports.push([module.i, ".crumbs[data-v-07f5f870]{text-decoration:none}.bread[data-v-07f5f870]{font-size:16px}.news-box[data-v-07f5f870]{padding:28px;width:800px;border:1px solid #e1e1e1;box-shadow:0 0 2px rgba(0,0,0,.1)}.news-title[data-v-07f5f870]{font-size:22px;color:#287d7c;line-height:50px;font-weight:400;display:block}.borderline[data-v-07f5f870]{border-bottom:1px dotted #bfbfbf}.artinfo[data-v-07f5f870]{float:left;padding-bottom:5px;color:#999;margin:0;padding:0;display:block}.author[data-v-07f5f870]{color:#666}.article p[data-v-07f5f870]{padding:30px 0 50px;font-size:18px;color:#333;line-height:200%;text-indent:2em}.article[data-v-07f5f870]{display:inline-block;line-height:26px;padding-bottom:25px}.news-img[data-v-07f5f870]{text-align:center}.btn[data-v-07f5f870]{display:block;padding-left:500px}.news-comment[data-v-07f5f870]{margin-top:20px;text-align:center}", ""]);
 
 // exports
 
@@ -174,7 +188,23 @@ exports.push([module.i, ".news-box[data-v-07f5f870]{padding:28px;width:800px;bor
 /***/ (function(module, exports) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  return _c('div', [_c('div', {
+    staticClass: "crumbs"
+  }, [_c('el-breadcrumb', {
+    attrs: {
+      "separator": "/"
+    }
+  }, [_c('el-breadcrumb-item', {
+    attrs: {
+      "to": "/admin/news-management/list"
+    }
+  }, [_c('i', {
+    staticClass: "el-icon-date"
+  }), _vm._v(" "), _c('span', {
+    staticClass: "bread"
+  }, [_vm._v("新闻列表")])]), _vm._v(" "), _c('el-breadcrumb-item', [_c('span', {
+    staticClass: "bread"
+  }, [_vm._v(_vm._s(_vm.category))])])], 1)], 1), _vm._v(" "), _c('div', {
     staticClass: "news-box"
   }, [_c('el-form', {
     ref: "form",
@@ -237,19 +267,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('el-radio', {
     attrs: {
-      "label": "a"
+      "label": "VR行业"
     }
   }, [_vm._v("VR行业")]), _vm._v(" "), _c('el-radio', {
     attrs: {
-      "label": "b"
+      "label": "VR设备"
     }
   }, [_vm._v("VR设备")]), _vm._v(" "), _c('el-radio', {
     attrs: {
-      "label": "c"
+      "label": "VR应用"
     }
   }, [_vm._v("VR应用")]), _vm._v(" "), _c('el-radio', {
     attrs: {
-      "label": "d"
+      "label": "VR人物"
     }
   }, [_vm._v("VR人物")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
@@ -294,7 +324,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.cancel()
       }
     }
-  }, [_vm._v("取消")])], 1)], 1)], 1)
+  }, [_vm._v("取消")])], 1)], 1)], 1)])
 },staticRenderFns: []}
 
 /***/ }),

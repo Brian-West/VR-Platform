@@ -109,6 +109,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	computed: {
 		ok: function () {
 			return this.$route.path == '/admin/news-management/list';
+		},
+		able() {
+			if (this.activeIndex == '3') return false;else return true;
 		}
 	},
 	methods: {
@@ -119,26 +122,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			switch (key) {
 				case '1-1':
 					self.curCategory = 0;
-					self.getNews(self.pageNum[0][0], self.curCategory, 0);
+					self.getNews(self.pageNum[0][0], self.curCategory, 1);
 					break;
 				case '1-2':
-					self.curCategory = 0;
-					self.getNews(self.pageNum[0][1], self.curCategory, 0);
+					self.curCategory = 1;
+					self.getNews(self.pageNum[0][1], self.curCategory, 1);
 					break;
 				case '1-3':
-					self.curCategory = 0;
-					self.getNews(self.pageNum[0][2], self.curCategory, 0);
+					self.curCategory = 2;
+					self.getNews(self.pageNum[0][2], self.curCategory, 1);
 					break;
 				case '1-4':
-					self.curCategory = 0;
-					self.getNews(self.pageNum[0][3], self.curCategory, 0);
+					self.curCategory = 3;
+					self.getNews(self.pageNum[0][3], self.curCategory, 1);
 					break;
 				case '1-5':
-					self.curCategory = 0;
-					self.getNews(self.pageNum[0][4], self.curCategory, 0);
+					self.curCategory = 4;
+					self.getNews(self.pageNum[0][4], self.curCategory, 1);
 					break;
 				case '2':
-					self.getNews(self.pageNum[1], 0, 1);
+					self.getNews(self.pageNum[1], 0, 0);
 					break;
 				case '3':
 					self.getNews(self.pageNum[2], 0, 2);
@@ -150,11 +153,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		getNews(str, category, flag) {
 			var self = this;
 			self.newsList = [];
-			if (category != 0) {
-				str = str + '/' + category;
-			}
 			self.$axios({
-				url: '/news_list/' + str,
+				url: '/news_list/' + str + '/' + category + '/' + flag,
 				method: 'get',
 				baseURL: 'http://localhost:8080' + self.hostURL
 			}).then(response => {
@@ -173,22 +173,22 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			console.log(e);
 			switch (self.activeIndex) {
 				case '1-1':
-					self.getNews(e, self.curCategory, 0);
+					self.getNews(e, self.curCategory, 1);
 					break;
 				case '1-2':
-					self.getNews(e, self.curCategory, 0);
+					self.getNews(e, self.curCategory, 1);
 					break;
 				case '1-3':
-					self.getNews(e, self.curCategory, 0);
+					self.getNews(e, self.curCategory, 1);
 					break;
 				case '1-4':
-					self.getNews(e, self.curCategory, 0);
+					self.getNews(e, self.curCategory, 1);
 					break;
 				case '1-5':
-					self.getNews(e, self.curCategory, 0);
+					self.getNews(e, self.curCategory, 1);
 					break;
 				case '2':
-					self.getNews(e, 0, 1);
+					self.getNews(e, 0, 0);
 					break;
 				case '3':
 					self.getNews(e, 0, 2);
@@ -226,26 +226,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					switch (this.activeIndex) {
 						case '1-1':
 							self.curCategory = 0;
-							self.getNews(self.pageNum[0][0], self.curCategory, 0);
+							self.getNews(self.pageNum[0][0], self.curCategory, 1);
 							break;
 						case '1-2':
-							self.curCategory = 0;
-							self.getNews(self.pageNum[0][1], self.curCategory, 0);
+							self.curCategory = 1;
+							self.getNews(self.pageNum[0][1], self.curCategory, 1);
 							break;
 						case '1-3':
-							self.curCategory = 0;
-							self.getNews(self.pageNum[0][2], self.curCategory, 0);
+							self.curCategory = 2;
+							self.getNews(self.pageNum[0][2], self.curCategory, 1);
 							break;
 						case '1-4':
-							self.curCategory = 0;
-							self.getNews(self.pageNum[0][3], self.curCategory, 0);
+							self.curCategory = 3;
+							self.getNews(self.pageNum[0][3], self.curCategory, 1);
 							break;
 						case '1-5':
-							self.curCategory = 0;
-							self.getNews(self.pageNum[0][4], self.curCategory, 0);
+							self.curCategory = 4;
+							self.getNews(self.pageNum[0][4], self.curCategory, 1);
 							break;
 						case '2':
-							self.getNews(self.pageNum[1], 0, 1);
+							self.getNews(self.pageNum[1], 0, 0);
 							break;
 						case '3':
 							self.getNews(self.pageNum[2], 0, 2);
@@ -267,9 +267,13 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var foo = this.time;
 			var d1 = this.parseDate(foo[0]);
 			var d2 = this.parseDate(foo[1]);
+			var push = 1;
+			if (this.activeIndex == '2') push = 0;
 			this.$axios.post('http://localhost:8080' + this.hostURL + '/getNewsByRange', {
 				from: d1,
-				to: d2
+				to: d2,
+				category: this.curCategory,
+				is_push: push
 			}).then(response => {
 				this.newsList = [];
 				this.newsList = response.data;
@@ -289,7 +293,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	mounted() {
 		var self = this;
-		self.getNews(self.pageNum[0][0], self.curCategory, 0);
+		self.getNews(self.pageNum[0][0], self.curCategory, 1);
 	}
 });
 
@@ -367,6 +371,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('span', {
     staticClass: "text"
   }, [_vm._v("已删除")])]), _vm._v(" "), _c('div', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.able),
+      expression: "able"
+    }],
     staticClass: "block search"
   }, [_c('el-date-picker', {
     attrs: {
@@ -381,6 +391,12 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       expression: "time"
     }
   })], 1), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.able),
+      expression: "able"
+    }],
     staticClass: "btn-search",
     attrs: {
       "type": "primary",

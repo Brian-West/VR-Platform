@@ -4,7 +4,7 @@
 			<el-breadcrumb separator="/">
 				<el-breadcrumb-item><i class="el-icon-date"></i> <span class="bread">VR资讯</span></el-breadcrumb-item>
 				<el-breadcrumb-item to="/user/news-list"><span class="bread">新闻资讯</span></el-breadcrumb-item>
-				<el-breadcrumb-item><span class="bread">{{newsData.tag}}</span></el-breadcrumb-item>
+				<el-breadcrumb-item><span class="bread">{{category}}</span></el-breadcrumb-item>
 			</el-breadcrumb>
 		</div>
 		<div class="news-box">
@@ -28,8 +28,8 @@
 					</div>
 					<div class="comment-btn">
 						<el-button-group style="margin-bottom:10px">
-							<el-button icon="circle-check" size="small" @click="newsLikeClick()">赞{{newsData.upvote}}</el-button>
-							<el-button size="small" @click="newsUnlikeClick()">踩{{newsData.downvote}}<i class="el-icon-circle-cross el-icon--right"></i></el-button>
+							<el-button icon="circle-check" size="small" @click="newsLikeClick()" :disabled="state==-1?true:false" :type="state==1?successType:cancelType">赞{{newsData.upvote}}</el-button>
+							<el-button size="small" @click="newsUnlikeClick()" :disabled="state==1?true:false" :type="state==-1?successType:cancelType">踩{{newsData.downvote}}<i class="el-icon-circle-cross el-icon--right"></i></el-button>
 						</el-button-group>
 						<el-button type="primary" @click="refreshNewData()">发表评论</el-button>
 					</div>
@@ -127,9 +127,10 @@ export default {
 				news_abstract: "在很多人眼里，联想手机似乎是一个比较“玄学”的存在。在PC领域拼搏多年，联想终于打进智能手机市场。只",
 				content: "在很多人眼里，联想手机似乎是一个比较“玄学”的存在。在PC领域拼搏多年，联想终于打进智能手机市场。只可惜初出茅庐的联想并没有什么经验，无奈在苹果和小米的拉锯战中成为了炮灰。虽然联想在2014年收购了手机界骨灰级元老摩托罗拉，但这条路始终还是没有想象中的那么好走。先是苹果傲视群雄，后来OPPO、vivo崛起，势单力薄的联想手机想要站稳脚跟还是有点难的。根据此前的消息，联想手机业务分支品牌ZUK已经暂停运营了。痛失手机江山之后，联想将落脚点放在了潜力巨大的虚拟现实领域。去年10月，联想与微软进行了合作，未来两者将会在混合现实领域(包括增强现实和虚拟现实)共同谋求发展，开辟新天地。随后联想也很快推出了一款主打入门的混合现实头显，斩获了不少用户的好评。而在最近的CES亚洲展上，联想还推出了首款背包VR PC——Avalon  VR。这款PC外观设计精致，虽然采用了金属机身的设计，但整机的重量也仅有2.5kg(包括电池)。配置方面，Avalon  VR最高支持英特尔酷睿i7处理器，32GB DDR4内存以及512GB PCI-E固态硬盘，同时内置AMD Radeon  RX480/580独立显卡，足以轻松应对市面上所有VR游戏。此外，该电脑还采用了双电池设计，并且支持热插拔，官方称其普通模式下的续航时间可达10小时，即使是在高性能下进行VR体验也能坚持1.5小时。而为了帮助主机散热，该机还配备了水冷散热系统，出风口也设置在了背对背部的位置，避免热风吹向人体。根据联想的介绍，之后张艺谋VR体验店会全线采用Avalon  VR背包电脑，可见联想在VR界的地位还是值得被肯定的。而随着与微软的合作更加深入之后，未来联想还会在增强现实乃至混合现实界混出一片天地。不知道未来的PC市场究竟会变成怎样呢?真是越来越期待了呀。Via：POPPUR",
 				pic_location: "http://www.vrrb.cn/d/file/kuaixun/2017-06-11/74ba6748a8a88ed7b083e961a7ff9da4.jpg",
-				is_push: null
+				is_push: null,
+				
 			},
-
+			state: 0,
 			textarea: "",
 			display_hot: false,
 			display_new: false,
@@ -189,6 +190,15 @@ export default {
 					textarea: ""
 				}]
 			}
+		}
+	},
+	computed: {
+		category() {
+			if(this.newsData.tag == null) return '全部'
+			if(this.newsData.tag ==1) return 'VR行业'
+			if(this.newsData.tag ==2) return 'VR设备'
+			if(this.newsData.tag ==2) return 'VR应用'
+			if(this.newsData.tag ==2) return 'VR人物'
 		}
 	},
 	methods: {
@@ -256,6 +266,7 @@ export default {
 				baseURL: 'http://localhost:8080'+self.hostURL
 			}).then((response) => {
 				self.newsData = response.data;
+				console.log(self.state)
 			}).catch((error) => {
 				console.log(error);
 			});
@@ -323,7 +334,7 @@ export default {
 			} else {
 				if (self.hot_reply.replys[index].textarea == '') self.hot_reply.replys[index].appear = 0;
 				else {
-					//发送数据给后台
+					//发送数据给后台：回复内容+评论id
 					self.$axios({
 						url: '/MessageResponse/' + localStorage.getItem('ms_userid'), //{uid}
 						method: 'post',
@@ -516,72 +527,72 @@ export default {
 		},
 		commentLikeClick(item) {
 			var self = this;
-			item.state = (item.state == 1) ? 0 : 1;
-			var value = (item.state == 1) ? 1 : -1;
+			self.state = (self.state == 1) ? 0 : 1;
+			var value = (self.state == 1) ? 1 : -1;
 			item.upvote += value;
 			self.postCommLike(item, value);
 		},
 		//获取新闻点赞数
-		getNewsUpvote() {
-			var self = this;
-			self.$axios({
-				url: '/news/getUpvote/' + localStorage.getItem('ms_userid'),
-				method: 'post',
-				baseURL: self.hostURL,
-				data: {
-					belong: self.newsData.id
-				}
-			}).then((response) => {
-				self.newsData.upvote = response.data;
-			}).catch((error) => {
-				console.log(error);
-			});
-		},
+		//getNewsUpvote() {
+		//	var self = this;
+		//	self.$axios({
+		//		url: '/news/getUpvote/' + localStorage.getItem('ms_userid'),
+		//		method: 'post',
+		//		baseURL: self.hostURL,
+		//		data: {
+		//			belong: self.newsData.id
+		//		}
+		//	}).then((response) => {
+		//		self.newsData.upvote = response.data;
+		//	}).catch((error) => {
+		//		console.log(error);
+		//	});
+		//},
 		//点赞
 		postNewsLike(val) {
 			var self = this;
 			self.$axios({
-				url: '/news/upvote/' + self.newsData.id,//localStorage.getItem('ms_userid'),
+				url: '/news/upvote/' + localStorage.getItem('ms_userid'),
 				method: 'post',
 				baseURL: self.hostURL,
-				//data: {
-				//	name: localStorage.getItem("salesModel"),
-				//	value: val
-				//}
+				data: {
+					name: self.newsData.id,
+					value: val
+				}
 			}).catch((error) => {
 				console.log(error);
 			});
 		},
 		newsLikeClick() {
 			var self = this;
-			//self.pro_thumbs.state = (self.pro_thumbs.state == 1) ? 0 : 1;
-			//var value = (self.pro_thumbs.state == 1) ? 1 : -1
-			//self.pro_thumbs.upvote += value;
-			//console.log(self.pro_thumbs.state + " " + self.pro_thumbs.upvote);
-			//self.postProLike(value);
+			self.state = (self.state == 1) ? 0 : 1;
+			var value = (self.state == 1) ? 1 : -1
+			self.newsData.upvote += value;
+			console.log(self.state + " " + self.newsData.upvote);
+			self.postNewsLike(value);
 		},
 		//点踩
 		postNewsUnlike(val) {
 			var self = this;
 			self.$axios({
-				url: '/news/downvote/' + self.newsData.id,//localStorage.getItem('ms_userid'),
+				url: '/news/downvote/' + localStorage.getItem('ms_userid'),
 				method: 'post',
 				baseURL: self.hostURL,
-				//data: {
-				//	name: localStorage.getItem("salesModel"),
-				//	value: val
-				//}
+				data: {
+					name: self.newsData.id,
+					value: val
+				}
 			}).catch((error) => {
 				console.log(error);
 			});
 		},
 		newsUnlikeClick() {
 			var self = this;
-			//self.pro_thumbs.state = self.pro_thumbs.state == -1 ? 0 : -1;
-			//var value = self.pro_thumbs.state == -1 ? 1 : -1;
-			//self.pro_thumbs.downvote += value;
-			//console.log(self.pro_thumbs.state + " " + self.pro_thumbs.downvote);
-			//self.postNewsUnlike(value);
+			self.state = self.state == -1 ? 0 : -1;
+			var value = self.state == -1 ? 1 : -1;
+			self.newsData.downvote += value;
+			console.log(self.state + " " + self.newsData.downvote);
+			self.postNewsUnlike(value);
 		},
 	},
 	mounted() {
@@ -590,7 +601,7 @@ export default {
 		var news_id = arr[1];
 		console.log(news_id);
 		self.getNewsData(news_id);
-		self.getNewsUpvote();
+		//self.getNewsUpvote();
 		self.getHotComments();
 		self.getNewComments();
 	}
