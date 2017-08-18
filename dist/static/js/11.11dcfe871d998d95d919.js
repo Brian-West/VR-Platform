@@ -194,10 +194,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	computed: {
 		category() {
 			if (this.newsData.tag == null) return '全部';
-			if (this.newsData.tag == 1) return 'VR行业';
-			if (this.newsData.tag == 2) return 'VR设备';
-			if (this.newsData.tag == 2) return 'VR应用';
-			if (this.newsData.tag == 2) return 'VR人物';
+			if (this.newsData.tag == '1') return 'VR行业';
+			if (this.newsData.tag == '2') return 'VR设备';
+			if (this.newsData.tag == '3') return 'VR应用';
+			if (this.newsData.tag == '4') return 'VR人物';
 		}
 	},
 	methods: {
