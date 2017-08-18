@@ -156,7 +156,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			self.$axios({
 				url: '/news_list/' + str + '/' + category + '/' + flag,
 				method: 'get',
-				baseURL: 'http://localhost:8080' + self.hostURL
+				baseURL: self.hostURL
 			}).then(response => {
 				self.newsList = [];
 				self.newsList = response.data;
@@ -216,7 +216,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				this.$axios({
 					url: '/deleteNews/' + id,
 					method: 'get',
-					baseURL: 'http://localhost:8080' + this.hostURL
+					baseURL: this.hostURL
 				}).then(response => {
 					this.$message({
 						type: 'success',
@@ -269,7 +269,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var d2 = this.parseDate(foo[1]);
 			var push = 1;
 			if (this.activeIndex == '2') push = 0;
-			this.$axios.post('http://localhost:8080' + this.hostURL + '/getNewsByRange', {
+			this.$axios.post(this.hostURL + '/getNewsByRange', {
 				from: d1,
 				to: d2,
 				category: this.curCategory,

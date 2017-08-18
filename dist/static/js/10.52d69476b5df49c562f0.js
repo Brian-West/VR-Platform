@@ -124,7 +124,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			self.$axios({
 				url: '/news/' + id,
 				method: 'get',
-				baseURL: 'http://localhost:8080' + self.hostURL
+				baseURL: self.hostURL
 			}).then(response => {
 				self.newsData = response.data;
 				self.form.title = self.newsData.title;
@@ -143,7 +143,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					alert('submit!');
 					var myDate = new Date();
 					var str = this.parseDate(myDate);
-					this.$axios.post('http://localhost:8080' + this.hostURL + '/updateNews/' + this.newsData.id, {
+					this.$axios.post(this.hostURL + '/updateNews/' + this.newsData.id, {
 						id: this.newsData.id,
 						tag: this.form.category,
 						title: this.form.title,

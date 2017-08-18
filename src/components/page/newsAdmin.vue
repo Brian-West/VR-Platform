@@ -177,9 +177,11 @@ export default {
 			self.$axios({
 				url: '/news/' + id,
 				method: 'get',
-				baseURL: 'http://localhost:8080'+self.hostURL
+				baseURL: self.hostURL
 			}).then((response) => {
 				self.newsData = response.data;
+				self.getHotComments();
+				self.getNewComments();
 			}).catch((error) => {
 				console.log(error);
 			});
@@ -217,7 +219,7 @@ export default {
 				}]
 			};
 			self.$axios({
-				url: '/MessageLeaving/show/' + localStorage.getItem('ms_userid') + '?belong=' + localStorage.getItem("salesModel") + '&condition=hot',
+				url: '/MessageLeaving/show/' + localStorage.getItem('ms_userid') + '?belong=' + self.newsData.id + '&condition=hot',
 				method: 'get',
 				baseURL: self.hostURL,
 				// data:{
@@ -274,7 +276,7 @@ export default {
 				}]
 			};
 			self.$axios({
-				url: '/MessageLeaving/show/' + localStorage.getItem('ms_userid') + '?belong=' + localStorage.getItem("salesModel") + '&condition=time',
+				url: '/MessageLeaving/show/' + localStorage.getItem('ms_userid') + '?belong=' + self.newsData.id + '&condition=time',
 				method: 'get',
 				baseURL: self.hostURL,
 				// data:{
@@ -325,8 +327,6 @@ export default {
 		var news_id = arr[1];
 		self.getNewsData(news_id);
 		//self.getNewsUpvote();
-		self.getHotComments();
-		self.getNewComments();
 	}
 }
 </script>

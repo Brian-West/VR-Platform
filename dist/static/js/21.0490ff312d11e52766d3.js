@@ -236,7 +236,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			self.$axios({
 				url: '/news_list/' + str + '/' + category + '/' + 1,
 				method: 'get',
-				baseURL: 'http://localhost:8080' + self.hostURL
+				baseURL: self.hostURL
 			}).then(response => {
 				self.newsList = [];
 				self.newsList = response.data;
