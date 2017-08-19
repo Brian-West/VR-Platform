@@ -167,9 +167,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				subs: [{
 					index: '/admin/news-management/list',
 					title: '新闻列表'
-				}, {
-					index: '/admin/news-management/2',
-					title: '待定'
 				}]
 			}, {
 				icon: 'el-icon-menu',

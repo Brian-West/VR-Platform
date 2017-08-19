@@ -65,10 +65,10 @@ export default {
 							title: '新闻资讯'
 						},
 
-						{
-							index: '1',
-							title: '可以拓展'
-						}
+						// {
+						// 	index: '1',
+						// 	title: '可以拓展'
+						// }
 					]
 				},
 				{

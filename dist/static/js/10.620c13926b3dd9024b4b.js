@@ -131,7 +131,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				self.form.desc = self.newsData.news_abstract;
 				self.form.source = self.newsData.source;
 				self.form.date = self.newsData.last_edit_time;
-				self.form.category = ''; //self.newsData.tag
+				self.form.category = self.newsData.tag;
 				self.form.content = self.newsData.content;
 			}).catch(error => {
 				console.log(error);
@@ -150,7 +150,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						last_edit_time: "发布时间：" + str,
 						source: this.form.source,
 						news_abstract: this.form.desc,
-						content: this.form.content
+						content: this.form.content,
+						author: this.newsData.author,
+						is_push: 1,
+						path: this.newsData.path,
+						editor_id: this.newsData.editor_id,
+						upvote: this.newsData.upvote,
+						downvote: this.newsData.downvote,
+						pic_location: this.newsData.pic_location
 					}).then(response => {
 						this.$router.push('/admin/news-management/list');
 					}).then(error => {

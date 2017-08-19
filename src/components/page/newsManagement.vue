@@ -11,7 +11,8 @@
 				<el-menu-item index="1-5">VR人物</el-menu-item>
 			</el-submenu>
 			<el-menu-item index="2"><span class="text">待审核</span></el-menu-item>
-			<el-menu-item index="3"><span class="text">已删除</span></el-menu-item>
+			<!-- <el-menu-item index="3"><span class="text">已删除</span></el-menu-item> -->
+			<el-button class="crawler" type="primary" v-show="crawler" @click="startCrawling()" :loading="loading">爬取新闻</el-button>
 			<div class="block search" v-show="able">
 			    	<el-date-picker v-model="time" type="datetimerange" placeholder="选择时间范围"></el-date-picker>
 			</div>
@@ -58,9 +59,9 @@
 				</el-pagination>
 			</div>
 		</template>
-		<template v-else>
-			<div>eeeeeeeeeeeee</div>
-		</template>
+		<!-- <template v-else>
+			<div>crawler</div>
+		</template> -->
 	</el-menu>
 </template>
 
@@ -73,7 +74,8 @@ export default {
 			newsList: [],
 			pageNum: [[1, 1, 1, 1, 1], 1, 1],
 			curCategory: 0,
-			time: [new Date(2000, 10, 10, 10, 10, 0), new Date(2000, 10, 11, 10, 10, 0)]
+			time: [new Date(2000, 10, 10, 10, 10, 0), new Date(2000, 10, 11, 10, 10, 0)],
+			loading: false
 		}
 	},
 	computed: {
@@ -83,6 +85,10 @@ export default {
 		able() {
 			if(this.activeIndex == '3') return false
 			else return true
+		},
+		crawler() {
+			if(this.activeIndex == '2') return true
+			else return false
 		}
 	},
 	methods: {
@@ -260,6 +266,29 @@ export default {
 			str += (myDate.getMinutes() < 10 ? '0' + myDate.getMinutes() : myDate.getMinutes()) + ':'
 			str += (myDate.getSeconds() < 10 ? '0' + myDate.getSeconds() : myDate.getSeconds())
 			return str;
+		},
+		startCrawling() {
+			this.loading = true
+			this.$axios({
+				url: '/news/crawler',
+				method: 'get',
+				baseURL: this.hostURL
+			}).then((response) => {
+				this.loading = false
+				this.$message({
+	      				type: 'info',
+	      				message: 'succeed'
+	      			})
+	      			this.pageNum[1] = 0
+	      			this.getNews(this.pageNum[1], 0, 0)
+			}).then((error) => {
+				this.loading = false
+				console.log(error)
+				this.$message({
+	      				type: 'info',
+	      				message: 'connect fail'
+	      			})
+			})
 		}
 	},
 	mounted() {
@@ -356,5 +385,10 @@ a:visited {
 	position: absolute;
 	left: 94%;
 	top: 1.3%;
+}
+.crawler {
+	position: absolute;
+	left: 64%;
+	top:1.3%;
 }
 </style>

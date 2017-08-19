@@ -94,6 +94,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
@@ -103,7 +104,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			newsList: [],
 			pageNum: [[1, 1, 1, 1, 1], 1, 1],
 			curCategory: 0,
-			time: [new Date(2000, 10, 10, 10, 10, 0), new Date(2000, 10, 11, 10, 10, 0)]
+			time: [new Date(2000, 10, 10, 10, 10, 0), new Date(2000, 10, 11, 10, 10, 0)],
+			loading: false
 		};
 	},
 	computed: {
@@ -112,6 +114,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		},
 		able() {
 			if (this.activeIndex == '3') return false;else return true;
+		},
+		crawler() {
+			if (this.activeIndex == '2') return true;else return false;
 		}
 	},
 	methods: {
@@ -289,6 +294,29 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			str += (myDate.getMinutes() < 10 ? '0' + myDate.getMinutes() : myDate.getMinutes()) + ':';
 			str += myDate.getSeconds() < 10 ? '0' + myDate.getSeconds() : myDate.getSeconds();
 			return str;
+		},
+		startCrawling() {
+			this.loading = true;
+			this.$axios({
+				url: '/news/crawler',
+				method: 'get',
+				baseURL: this.hostURL
+			}).then(response => {
+				this.loading = false;
+				this.$message({
+					type: 'info',
+					message: 'succeed'
+				});
+				this.pageNum[1] = 0;
+				this.getNews(this.pageNum[1], 0, 0);
+			}).then(error => {
+				this.loading = false;
+				console.log(error);
+				this.$message({
+					type: 'info',
+					message: 'connect fail'
+				});
+			});
 		}
 	},
 	mounted() {
@@ -307,7 +335,7 @@ exports = module.exports = __webpack_require__(82)(undefined);
 
 
 // module
-exports.push([module.i, "ul[data-v-d2a5d5fe]{list-style:none;display:block;-webkit-margin-before:1em;-webkit-margin-after:1em;-webkit-margin-start:0;-webkit-margin-end:0;-webkit-padding-start:40px;position:relative}li[data-v-d2a5d5fe]{list-style-type:none;padding-bottom:10px;border-bottom:1px solid #ccc}a[data-v-d2a5d5fe],a[data-v-d2a5d5fe]:hover,a[data-v-d2a5d5fe]:visited{text-decoration:none}.news-list[data-v-d2a5d5fe]{margin-top:5em}.text[data-v-d2a5d5fe]{font-size:15px}.news-item[data-v-d2a5d5fe]{height:124px;margin-bottom:24px;overflow:hidden}.news-list .news-item .link-tit[data-v-d2a5d5fe]{color:#e9c06c}.news-list .news-item img[data-v-d2a5d5fe]{display:block;float:left;margin-right:20px;width:200px}.news-list .news-item .news-title[data-v-d2a5d5fe]{display:block;font-size:22px;font-weight:lighter;color:#3e3e3e;line-height:50px;height:50px;overflow:hidden;width:70%;margin-right:0}.news-list .news-desc[data-v-d2a5d5fe]{display:block;height:60px;overflow:hidden;font-size:14px;color:#898989;line-height:1.5}#group[data-v-d2a5d5fe]{float:right;padding-bottom:100px}.search[data-v-d2a5d5fe]{position:absolute;width:20%;left:71%;top:1.3%}.btn-search[data-v-d2a5d5fe]{position:absolute;left:94%;top:1.3%}", ""]);
+exports.push([module.i, "ul[data-v-d2a5d5fe]{list-style:none;display:block;-webkit-margin-before:1em;-webkit-margin-after:1em;-webkit-margin-start:0;-webkit-margin-end:0;-webkit-padding-start:40px;position:relative}li[data-v-d2a5d5fe]{list-style-type:none;padding-bottom:10px;border-bottom:1px solid #ccc}a[data-v-d2a5d5fe],a[data-v-d2a5d5fe]:hover,a[data-v-d2a5d5fe]:visited{text-decoration:none}.news-list[data-v-d2a5d5fe]{margin-top:5em}.text[data-v-d2a5d5fe]{font-size:15px}.news-item[data-v-d2a5d5fe]{height:124px;margin-bottom:24px;overflow:hidden}.news-list .news-item .link-tit[data-v-d2a5d5fe]{color:#e9c06c}.news-list .news-item img[data-v-d2a5d5fe]{display:block;float:left;margin-right:20px;width:200px}.news-list .news-item .news-title[data-v-d2a5d5fe]{display:block;font-size:22px;font-weight:lighter;color:#3e3e3e;line-height:50px;height:50px;overflow:hidden;width:70%;margin-right:0}.news-list .news-desc[data-v-d2a5d5fe]{display:block;height:60px;overflow:hidden;font-size:14px;color:#898989;line-height:1.5}#group[data-v-d2a5d5fe]{float:right;padding-bottom:100px}.search[data-v-d2a5d5fe]{position:absolute;width:20%;left:71%;top:1.3%}.btn-search[data-v-d2a5d5fe]{position:absolute;left:94%;top:1.3%}.crawler[data-v-d2a5d5fe]{position:absolute;left:64%;top:1.3%}", ""]);
 
 // exports
 
@@ -364,13 +392,24 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_c('span', {
     staticClass: "text"
-  }, [_vm._v("待审核")])]), _vm._v(" "), _c('el-menu-item', {
+  }, [_vm._v("待审核")])]), _vm._v(" "), _c('el-button', {
+    directives: [{
+      name: "show",
+      rawName: "v-show",
+      value: (_vm.crawler),
+      expression: "crawler"
+    }],
+    staticClass: "crawler",
     attrs: {
-      "index": "3"
+      "type": "primary",
+      "loading": _vm.loading
+    },
+    on: {
+      "click": function($event) {
+        _vm.startCrawling()
+      }
     }
-  }, [_c('span', {
-    staticClass: "text"
-  }, [_vm._v("已删除")])]), _vm._v(" "), _c('div', {
+  }, [_vm._v("爬取新闻")]), _vm._v(" "), _c('div', {
     directives: [{
       name: "show",
       rawName: "v-show",
@@ -603,7 +642,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  })], 1) : _vm._e()] : [_c('div', [_vm._v("eeeeeeeeeeeee")])]], 2)
+  })], 1) : _vm._e()] : _vm._e()], 2)
 },staticRenderFns: []}
 
 /***/ }),

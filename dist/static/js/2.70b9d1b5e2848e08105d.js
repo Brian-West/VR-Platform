@@ -87,9 +87,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				subs: [{
 					index: '/user/news-list',
 					title: '新闻资讯'
-				}, {
-					index: '1',
-					title: '可以拓展'
 				}]
 			}, {
 				icon: 'el-icon-menu',
