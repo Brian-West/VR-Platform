@@ -72,6 +72,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
@@ -115,6 +118,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (this.newsData.tag == '2') return 'VR设备';
 			if (this.newsData.tag == '3') return 'VR应用';
 			if (this.newsData.tag == '4') return 'VR人物';
+			if (this.newsData.tag == '5') return '上市新品';
+			if (this.newsData.tag == '6') return '现场快报';
+			if (this.newsData.tag == '7') return '精彩文章';
 		}
 	},
 	methods: {
@@ -305,7 +311,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "label": "4"
     }
-  }, [_vm._v("VR人物")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
+  }, [_vm._v("VR人物")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "5"
+    }
+  }, [_vm._v("上市新品")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "6"
+    }
+  }, [_vm._v("现场快报")]), _vm._v(" "), _c('el-radio', {
+    attrs: {
+      "label": "7"
+    }
+  }, [_vm._v("精彩文章")])], 1)], 1), _vm._v(" "), _c('el-form-item', {
     attrs: {
       "label": "新闻内容",
       "prop": "content"

@@ -23,6 +23,9 @@
 						<el-radio label=2>VR设备</el-radio>
 						<el-radio label=3>VR应用</el-radio>
 						<el-radio label=4>VR人物</el-radio>
+						<el-radio label=5>上市新品</el-radio>
+						<el-radio label=6>现场快报</el-radio>
+						<el-radio label=7>精彩文章</el-radio>
 					</el-radio-group>
 				</el-form-item>
 				<el-form-item label="新闻内容" prop="content">
@@ -93,6 +96,9 @@ export default {
 			if(this.newsData.tag == '2') return 'VR设备'
 			if(this.newsData.tag == '3') return 'VR应用'
 			if(this.newsData.tag == '4') return 'VR人物'
+			if(this.newsData.tag == '5') return '上市新品'
+			if(this.newsData.tag == '6') return '现场快报'
+			if(this.newsData.tag == '7') return '精彩文章'
 		}
 	},
 	methods: {

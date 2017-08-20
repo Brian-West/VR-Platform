@@ -95,6 +95,21 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data() {
@@ -102,7 +117,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			activeIndex: '1-1',
 			hostURL: '/VR',
 			newsList: [],
-			pageNum: [[1, 1, 1, 1, 1], 1, 1],
+			pageNum: [[1, 1, 1, 1, 1, 1, 1, 1], 1, 1],
 			curCategory: 0,
 			time: [new Date(2000, 10, 10, 10, 10, 0), new Date(2000, 10, 11, 10, 10, 0)],
 			loading: false
@@ -144,6 +159,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				case '1-5':
 					self.curCategory = 4;
 					self.getNews(self.pageNum[0][4], self.curCategory, 1);
+					break;
+				case '1-6':
+					self.curCategory = 5;
+					self.getNews(self.pageNum[0][5], self.curCategory, 1);
+					break;
+				case '1-7':
+					self.curCategory = 6;
+					self.getNews(self.pageNum[0][6], self.curCategory, 1);
+					break;
+				case '1-8':
+					self.curCategory = 7;
+					self.getNews(self.pageNum[0][7], self.curCategory, 1);
 					break;
 				case '2':
 					self.getNews(self.pageNum[1], 0, 0);
@@ -190,6 +217,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 					self.getNews(e, self.curCategory, 1);
 					break;
 				case '1-5':
+					self.getNews(e, self.curCategory, 1);
+					break;
+				case '1-6':
+					self.getNews(e, self.curCategory, 1);
+					break;
+				case '1-7':
+					self.getNews(e, self.curCategory, 1);
+					break;
+				case '1-8':
 					self.getNews(e, self.curCategory, 1);
 					break;
 				case '2':
@@ -248,6 +284,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 						case '1-5':
 							self.curCategory = 4;
 							self.getNews(self.pageNum[0][4], self.curCategory, 1);
+							break;
+						case '1-6':
+							self.curCategory = 5;
+							self.getNews(self.pageNum[0][5], self.curCategory, 1);
+							break;
+						case '1-7':
+							self.curCategory = 6;
+							self.getNews(self.pageNum[0][6], self.curCategory, 1);
+							break;
+						case '1-8':
+							self.curCategory = 7;
+							self.getNews(self.pageNum[0][7], self.curCategory, 1);
 							break;
 						case '2':
 							self.getNews(self.pageNum[1], 0, 0);
@@ -386,7 +434,19 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "index": "1-5"
     }
-  }, [_vm._v("VR人物")])], 2), _vm._v(" "), _c('el-menu-item', {
+  }, [_vm._v("VR人物")]), _vm._v(" "), _c('el-menu-item', {
+    attrs: {
+      "index": "1-6"
+    }
+  }, [_vm._v("上市新品")]), _vm._v(" "), _c('el-menu-item', {
+    attrs: {
+      "index": "1-7"
+    }
+  }, [_vm._v("现场快报")]), _vm._v(" "), _c('el-menu-item', {
+    attrs: {
+      "index": "1-8"
+    }
+  }, [_vm._v("精彩文章")])], 2), _vm._v(" "), _c('el-menu-item', {
     attrs: {
       "index": "2"
     }
@@ -597,6 +657,66 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           $$idx = 4;
         if (!Array.isArray($$exp)) {
           _vm.pageNum[0][4] = $event
+        } else {
+          $$exp.splice($$idx, 1, $event)
+        }
+      }
+    }
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.activeIndex == '1-6') ? _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    attrs: {
+      "id": "change",
+      "currentPage": _vm.pageNum[0][5],
+      "layout": "prev, next"
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        var $$exp = _vm.pageNum[0],
+          $$idx = 5;
+        if (!Array.isArray($$exp)) {
+          _vm.pageNum[0][5] = $event
+        } else {
+          $$exp.splice($$idx, 1, $event)
+        }
+      }
+    }
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.activeIndex == '1-7') ? _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    attrs: {
+      "id": "change",
+      "currentPage": _vm.pageNum[0][6],
+      "layout": "prev, next"
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        var $$exp = _vm.pageNum[0],
+          $$idx = 6;
+        if (!Array.isArray($$exp)) {
+          _vm.pageNum[0][6] = $event
+        } else {
+          $$exp.splice($$idx, 1, $event)
+        }
+      }
+    }
+  })], 1) : _vm._e(), _vm._v(" "), (_vm.activeIndex == '1-8') ? _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    attrs: {
+      "id": "change",
+      "currentPage": _vm.pageNum[0][7],
+      "layout": "prev, next"
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        var $$exp = _vm.pageNum[0],
+          $$idx = 7;
+        if (!Array.isArray($$exp)) {
+          _vm.pageNum[0][7] = $event
         } else {
           $$exp.splice($$idx, 1, $event)
         }

@@ -121,6 +121,51 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	data: function () {
@@ -138,7 +183,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				news_abstract: '22222222222222222222222222222222222222222',
 				pic_location: './static/img/img.jpg'
 			}],
-			pageNum: [1, 1, 1, 1, 1],
+			pageNum: [1, 1, 1, 1, 1, 1, 1, 1],
 			pageTotal: 20,
 			pageSize: 1,
 			curCategory: 0
@@ -225,6 +270,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				case 'fifth':
 					self.curCategory = 4;
 					self.getNews(self.pageNum[4], self.curCategory);
+					break;
+				case 'sixth':
+					self.curCategory = 5;
+					self.getNews(self.pageNum[5], self.curCategory);
+					break;
+				case 'seventh':
+					self.curCategory = 6;
+					self.getNews(self.pageNum[6], self.curCategory);
+					break;
+				case 'eighth':
+					self.curCategory = 7;
+					self.getNews(self.pageNum[7], self.curCategory);
 					break;
 				default:
 					break;
@@ -551,6 +608,153 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           $$idx = 4;
         if (!Array.isArray($$exp)) {
           _vm.pageNum[4] = $event
+        } else {
+          $$exp.splice($$idx, 1, $event)
+        }
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "上市新品",
+      "name": "sixth"
+    }
+  }, [_c('ul', {
+    staticClass: "news-list"
+  }, _vm._l((_vm.newsList), function(news) {
+    return _c('li', {
+      staticClass: "news-item",
+      on: {
+        "click": function($event) {
+          _vm.newsClick(news)
+        }
+      }
+    }, [_c('a', {
+      staticClass: "link-tit",
+      attrs: {
+        "href": "javascript:void(0);",
+        "title": ""
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": news.pic_location
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "news-title"
+    }, [_vm._v(_vm._s(news.title))]), _vm._v(" "), _c('span', {
+      staticClass: "news-desc"
+    }, [_vm._v(_vm._s(news.news_abstract))])])])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.pageNum[5],
+      "layout": "prev, next"
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        var $$exp = _vm.pageNum,
+          $$idx = 5;
+        if (!Array.isArray($$exp)) {
+          _vm.pageNum[5] = $event
+        } else {
+          $$exp.splice($$idx, 1, $event)
+        }
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "现场快报",
+      "name": "seventh"
+    }
+  }, [_c('ul', {
+    staticClass: "news-list"
+  }, _vm._l((_vm.newsList), function(news) {
+    return _c('li', {
+      staticClass: "news-item",
+      on: {
+        "click": function($event) {
+          _vm.newsClick(news)
+        }
+      }
+    }, [_c('a', {
+      staticClass: "link-tit",
+      attrs: {
+        "href": "javascript:void(0);",
+        "title": ""
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": news.pic_location
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "news-title"
+    }, [_vm._v(_vm._s(news.title))]), _vm._v(" "), _c('span', {
+      staticClass: "news-desc"
+    }, [_vm._v(_vm._s(news.news_abstract))])])])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.pageNum[6],
+      "layout": "prev, next"
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        var $$exp = _vm.pageNum,
+          $$idx = 6;
+        if (!Array.isArray($$exp)) {
+          _vm.pageNum[6] = $event
+        } else {
+          $$exp.splice($$idx, 1, $event)
+        }
+      }
+    }
+  })], 1)]), _vm._v(" "), _c('el-tab-pane', {
+    attrs: {
+      "label": "精彩文章",
+      "name": "eighth"
+    }
+  }, [_c('ul', {
+    staticClass: "news-list"
+  }, _vm._l((_vm.newsList), function(news) {
+    return _c('li', {
+      staticClass: "news-item",
+      on: {
+        "click": function($event) {
+          _vm.newsClick(news)
+        }
+      }
+    }, [_c('a', {
+      staticClass: "link-tit",
+      attrs: {
+        "href": "javascript:void(0);",
+        "title": ""
+      }
+    }, [_c('img', {
+      attrs: {
+        "src": news.pic_location
+      }
+    }), _vm._v(" "), _c('span', {
+      staticClass: "news-title"
+    }, [_vm._v(_vm._s(news.title))]), _vm._v(" "), _c('span', {
+      staticClass: "news-desc"
+    }, [_vm._v(_vm._s(news.news_abstract))])])])
+  })), _vm._v(" "), _c('div', {
+    staticClass: "pagination"
+  }, [_c('el-pagination', {
+    attrs: {
+      "current-page": _vm.pageNum[7],
+      "layout": "prev, next"
+    },
+    on: {
+      "current-change": _vm.handleCurrentChange,
+      "update:currentPage": function($event) {
+        var $$exp = _vm.pageNum,
+          $$idx = 7;
+        if (!Array.isArray($$exp)) {
+          _vm.pageNum[7] = $event
         } else {
           $$exp.splice($$idx, 1, $event)
         }

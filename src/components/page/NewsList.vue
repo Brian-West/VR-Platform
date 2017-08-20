@@ -85,6 +85,51 @@
 								</el-pagination>
 							</div>
 						</el-tab-pane>
+						<el-tab-pane label="上市新品" name="sixth">
+							<ul class="news-list">
+								<li class="news-item" v-for="news in newsList" @click="newsClick(news)">
+									<a href="javascript:void(0);" class="link-tit" title="">
+							      	             <img :src="news.pic_location">
+							      	             <span class="news-title">{{news.title}}</span>
+							      	             <span class="news-desc">{{news.news_abstract}}</span>
+							      	      </a>
+								</li>
+							</ul>
+							<div class="pagination">
+								<el-pagination @current-change="handleCurrentChange" :current-page.sync="pageNum[5]" layout="prev, next">
+								</el-pagination>
+							</div>
+						</el-tab-pane>
+						<el-tab-pane label="现场快报" name="seventh">
+							<ul class="news-list">
+								<li class="news-item" v-for="news in newsList" @click="newsClick(news)">
+									<a href="javascript:void(0);" class="link-tit" title="">
+							      	             <img :src="news.pic_location">
+							      	             <span class="news-title">{{news.title}}</span>
+							      	             <span class="news-desc">{{news.news_abstract}}</span>
+							      	      </a>
+								</li>
+							</ul>
+							<div class="pagination">
+								<el-pagination @current-change="handleCurrentChange" :current-page.sync="pageNum[6]" layout="prev, next">
+								</el-pagination>
+							</div>
+						</el-tab-pane>
+						<el-tab-pane label="精彩文章" name="eighth">
+							<ul class="news-list">
+								<li class="news-item" v-for="news in newsList" @click="newsClick(news)">
+									<a href="javascript:void(0);" class="link-tit" title="">
+							      	             <img :src="news.pic_location">
+							      	             <span class="news-title">{{news.title}}</span>
+							      	             <span class="news-desc">{{news.news_abstract}}</span>
+							      	      </a>
+								</li>
+							</ul>
+							<div class="pagination">
+								<el-pagination @current-change="handleCurrentChange" :current-page.sync="pageNum[7]" layout="prev, next">
+								</el-pagination>
+							</div>
+						</el-tab-pane>
 					</el-tabs>
 				</div>
 			</el-col>
@@ -110,7 +155,7 @@ export default {
 					pic_location: './static/img/img.jpg',
 				}
 			],
-			pageNum: [1, 1, 1, 1, 1],
+			pageNum: [1, 1, 1, 1, 1, 1, 1, 1],
 			pageTotal: 20,
 			pageSize: 1,
 			curCategory: 0
@@ -197,6 +242,18 @@ export default {
 				case 'fifth':
 					self.curCategory = 4;
 					self.getNews(self.pageNum[4], self.curCategory);
+					break;
+				case 'sixth':
+					self.curCategory = 5;
+					self.getNews(self.pageNum[5], self.curCategory);
+					break;
+				case 'seventh':
+					self.curCategory = 6;
+					self.getNews(self.pageNum[6], self.curCategory);
+					break;
+				case 'eighth':
+					self.curCategory = 7;
+					self.getNews(self.pageNum[7], self.curCategory);
 					break;
 				default:
 					break;

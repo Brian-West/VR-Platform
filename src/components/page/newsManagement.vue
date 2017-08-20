@@ -9,6 +9,9 @@
 				<el-menu-item index="1-3">VR设备</el-menu-item>
 				<el-menu-item index="1-4">VR应用</el-menu-item>
 				<el-menu-item index="1-5">VR人物</el-menu-item>
+				<el-menu-item index="1-6">上市新品</el-menu-item>
+				<el-menu-item index="1-7">现场快报</el-menu-item>
+				<el-menu-item index="1-8">精彩文章</el-menu-item>
 			</el-submenu>
 			<el-menu-item index="2"><span class="text">待审核</span></el-menu-item>
 			<!-- <el-menu-item index="3"><span class="text">已删除</span></el-menu-item> -->
@@ -50,6 +53,18 @@
 				<el-pagination id="change" @current-change="handleCurrentChange" :currentPage.sync="pageNum[0][4]" layout="prev, next">
 				</el-pagination>
 			</div>
+			<div class="pagination" v-if="activeIndex=='1-6'">
+				<el-pagination id="change" @current-change="handleCurrentChange" :currentPage.sync="pageNum[0][5]" layout="prev, next">
+				</el-pagination>
+			</div>
+			<div class="pagination" v-if="activeIndex=='1-7'">
+				<el-pagination id="change" @current-change="handleCurrentChange" :currentPage.sync="pageNum[0][6]" layout="prev, next">
+				</el-pagination>
+			</div>
+			<div class="pagination" v-if="activeIndex=='1-8'">
+				<el-pagination id="change" @current-change="handleCurrentChange" :currentPage.sync="pageNum[0][7]" layout="prev, next">
+				</el-pagination>
+			</div>
 			<div class="pagination" v-if="activeIndex=='2'">
 				<el-pagination id="change" @current-change="handleCurrentChange" :currentPage.sync="pageNum[1]" layout="prev, next">
 				</el-pagination>
@@ -72,7 +87,7 @@ export default {
 			activeIndex: '1-1',
 			hostURL: '/VR',
 			newsList: [],
-			pageNum: [[1, 1, 1, 1, 1], 1, 1],
+			pageNum: [[1, 1, 1, 1, 1, 1, 1, 1], 1, 1],
 			curCategory: 0,
 			time: [new Date(2000, 10, 10, 10, 10, 0), new Date(2000, 10, 11, 10, 10, 0)],
 			loading: false
@@ -116,6 +131,18 @@ export default {
 	        		case '1-5':
 	        			self.curCategory = 4
 	        			self.getNews(self.pageNum[0][4], self.curCategory, 1);
+	        			break;
+	        		case '1-6':
+	        			self.curCategory = 5
+	        			self.getNews(self.pageNum[0][5], self.curCategory, 1);
+	        			break;
+	        		case '1-7':
+	        			self.curCategory = 6
+	        			self.getNews(self.pageNum[0][6], self.curCategory, 1);
+	        			break;
+	        		case '1-8':
+	        			self.curCategory = 7
+	        			self.getNews(self.pageNum[0][7], self.curCategory, 1);
 	        			break;
 	        		case '2':
 	        			self.getNews(self.pageNum[1], 0, 0);
@@ -162,6 +189,15 @@ export default {
 	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 				case '1-5':
+	        			self.getNews(e, self.curCategory, 1);
+	        			break;
+	        		case '1-6':
+	        			self.getNews(e, self.curCategory, 1);
+	        			break;
+	        		case '1-7':
+	        			self.getNews(e, self.curCategory, 1);
+	        			break;
+	        		case '1-8':
 	        			self.getNews(e, self.curCategory, 1);
 	        			break;
 	        		case '2':
@@ -220,6 +256,18 @@ export default {
 			   			case '1-5':
 			   				self.curCategory = 4
 			   				self.getNews(self.pageNum[0][4], self.curCategory, 1);
+			   				break;
+			   			case '1-6':
+			   				self.curCategory = 5
+			   				self.getNews(self.pageNum[0][5], self.curCategory, 1);
+			   				break;
+			   			case '1-7':
+			   				self.curCategory = 6
+			   				self.getNews(self.pageNum[0][6], self.curCategory, 1);
+			   				break;
+			   			case '1-8':
+			   				self.curCategory = 7
+			   				self.getNews(self.pageNum[0][7], self.curCategory, 1);
 			   				break;
 			   			case '2':
 			   				self.getNews(self.pageNum[1], 0, 0);

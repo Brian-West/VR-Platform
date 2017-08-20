@@ -228,6 +228,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			if (this.newsData.tag == '2') return 'VR设备';
 			if (this.newsData.tag == '3') return 'VR应用';
 			if (this.newsData.tag == '4') return 'VR人物';
+			if (this.newsData.tag == '5') return '上市新品';
+			if (this.newsData.tag == '6') return '现场快报';
+			if (this.newsData.tag == '7') return '精彩文章';
 		}
 	},
 	methods: {
